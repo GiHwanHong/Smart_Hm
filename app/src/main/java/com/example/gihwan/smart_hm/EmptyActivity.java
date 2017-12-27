@@ -8,10 +8,10 @@ import android.support.annotation.Nullable;
  * Created by GiHwan on 2017. 12. 27..
  */
 
-public class Tab3Activity extends Activity {
+public class EmptyActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tab3);
+        setContentView(R.layout.activity_empty);
     }
 }

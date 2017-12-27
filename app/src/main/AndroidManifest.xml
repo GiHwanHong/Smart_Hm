@@ -26,10 +26,11 @@
 
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".JoinActivity"></activity>
-        <activity android:name=".Tab1Activity"></activity>
-        <activity android:name=".Tab2Activity"></activity>
+        <activity android:name=".StateActivity"></activity>
+        <activity android:name=".ChartActivity"></activity>
         <activity android:name=".MypageActivity"></activity>
-        <activity android:name=".Tab3Activity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".EmptyActivity"></activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

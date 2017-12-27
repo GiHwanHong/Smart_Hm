@@ -119,7 +119,7 @@
             android:id="@+id/Join_Addr_Btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:onClick="Btn_Join_info"
+            android:onClick="Join_Btn_Click"
             android:text="주소찾기"
             android:textStyle="bold" />
     </LinearLayout>

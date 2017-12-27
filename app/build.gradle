@@ -25,12 +25,17 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.github.PhilJay:MpAndroidChart:v3.0.2'          // 원 그래프 만드는 라이브러리 MpAndroidChart
     //kakao_talk
     compile group: 'com.kakao.sdk', name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION
     //kakao_link
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaotalk', version: project.KAKAO_SDK_VERSION
     testCompile 'junit:junit:4.12'
+
+    // material Design Library
+    compile 'com.rengwuxian.materialedittext:library:2.1.4'
+    compile 'it.neokree:MaterialTabs:0.11'
 }

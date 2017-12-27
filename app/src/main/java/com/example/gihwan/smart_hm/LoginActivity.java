@@ -1,6 +1,5 @@
 package com.example.gihwan.smart_hm;
 
-import android.app.Activity;
 import android.app.ActivityGroup;
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,10 +25,10 @@ public class LoginActivity extends ActivityGroup {
 
         tabhost1.addTab(tabhost1.newTabSpec("tab1tag")                      // newTabSpec - TabSpec 객체는 탭버튼의 형태와 탭의 내용을 관리하는 객체입니다.
                 .setIndicator(getString(R.string.tab1))                     // TabSpec 객체를 생성할때 사용할 tag 이름을 지정합니다.
-                .setContent(new Intent(this, Tab1Activity.class)));
+                .setContent(new Intent(this, StateActivity.class)));
         tabhost1.addTab(tabhost1.newTabSpec("tab2tag")
                 .setIndicator(getString(R.string.tab2))
-                .setContent(new Intent(this, Tab2Activity.class)));
+                .setContent(new Intent(this, ChartActivity.class)));
         tabhost1.addTab(tabhost1.newTabSpec("tab3tag")
                 .setIndicator(getString(R.string.tab3))
                 .setContent(new Intent(this, MypageActivity.class)));
