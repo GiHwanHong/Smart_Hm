@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="kakao_app_key">3946f5e3c3c917f156ac54bd20623355</string>  <!--  앱만들기 할 때 받은 네이티브 앱키-->
+    <string name="kakao_scheme">kakako3946f5e3c3c917f156ac54bd20623355</string> <!--  kakao + 앱만들기 할 때 받은 네이티브 앱키-->
+    <string name="kakaolink_host">kakaolink</string>                    <!-- kakaoLink -->
+
+</resources>
