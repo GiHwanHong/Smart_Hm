@@ -29,6 +29,7 @@
         <activity android:name=".StateActivity"></activity>
         <activity android:name=".ChartActivity"></activity>
         <activity android:name=".MypageActivity"></activity>
+        <activity android:name=".AdselectActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
         <activity android:name=".EmptyActivity"></activity>
 

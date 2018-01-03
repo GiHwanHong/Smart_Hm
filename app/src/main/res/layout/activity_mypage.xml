@@ -128,7 +128,7 @@
             android:id="@+id/inAddress"
             android:layout_width="100dp"
             android:layout_height="50dp"
-            android:onClick="Btn_Join_info"
+            android:onClick="Mypage_Btn_click"
             android:text="주소찾기"
             android:textStyle="bold" />
     </LinearLayout>

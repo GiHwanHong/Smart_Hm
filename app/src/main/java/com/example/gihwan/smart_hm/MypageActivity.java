@@ -1,12 +1,19 @@
 package com.example.gihwan.smart_hm;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
+import android.location.Address;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kakao.kakaolink.KakaoLink;
@@ -22,7 +29,9 @@ public class MypageActivity extends Activity {
 
     private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
     EditText Code_Val ;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
-   // String Code_Val_send = null;
+    private String str = null;
+    private TextView Address;
+    //String Code_Val_send = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +39,8 @@ public class MypageActivity extends Activity {
         setContentView(R.layout.activity_mypage);
 
         Code_Val = (EditText) findViewById(R.id.code_val);
+        Address = (TextView) findViewById(R.id.Address);
+
 
         try {
             kakaoLink = KakaoLink.getKakaoLink(MypageActivity.this);
@@ -63,6 +74,26 @@ public class MypageActivity extends Activity {
             case R.id.Mypage_Update:    // 회원 정보 변경 버튼 클릭시
                 Toast.makeText(getApplicationContext(), " DataBase Update 처리가 되어야합니다", Toast.LENGTH_SHORT).show();
                 break;
+
+            case R.id.inAddress:        // 회원 주소 찾기 버튼 클릭시
+                Intent in_getData = new Intent(MypageActivity.this, AdselectActivity.class);
+                startActivityForResult(in_getData, 0);
+                break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        switch (requestCode) {       // startActivityForResult에서 넘긴 값을 처리하기 위함
+            case 0:                  // Daum에서 받은 주소 값을 받기 위함.
+                if (resultCode == RESULT_OK) {
+                    str = data.getStringExtra("address");
+                    Log.e("잘 받았어 고마워 : ", str);
+                    Address.setText(str);
+                }
+                break;
+
         }
     }
 }

@@ -9,11 +9,6 @@ import android.widget.LinearLayout;
 public class MainActivity extends Activity {
     LinearLayout show1 , show2 , show3;
 
-    /*Button house_holder, house_member;
-    Button login_btn, join_btn, login_member;
-    EditText house_holderid, house_holderpw;
-    EditText member_code;*/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,17 +22,6 @@ public class MainActivity extends Activity {
         show1.setVisibility(View.VISIBLE);
         show2.setVisibility(View.GONE);
         show3.setVisibility(View.GONE);
-
-
-        /*house_holder = (Button)findViewById(R.id.house_holder);
-        house_member = (Button)findViewById(R.id.house_member);
-        login_btn = (Button)findViewById(R.id.login_btn);
-        join_btn = (Button)findViewById(R.id.join_btn);
-        login_member = (Button)findViewById(R.id.login_member);
-
-        house_holderid = (EditText)findViewById(R.id.house_holderid);
-        house_holderpw = (EditText)findViewById(R.id.house_holderpw);
-        member_code = (EditText)findViewById(R.id.member_code);*/
 
     }
 
