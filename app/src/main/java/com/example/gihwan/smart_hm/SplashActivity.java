@@ -19,13 +19,12 @@ public class SplashActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try{
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         }catch (InterruptedException e){
             e.printStackTrace();
         }
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
-
 
 }

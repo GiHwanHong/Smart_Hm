@@ -18,18 +18,17 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //startActivity(new Intent(this,SplashActivity.class));
         setContentView(R.layout.activity_main);
 
         main_show = (RelativeLayout) findViewById(R.id.main_show);
         show1 = (RelativeLayout)findViewById(R.id.show1);
         show2 = (RelativeLayout)findViewById(R.id.show2);
         show3 = (RelativeLayout)findViewById(R.id.show3);
-
     }
 
     @Override
     public void onBackPressed() { // 뒤로 가기 버튼 제어
+
         second_time = System.currentTimeMillis();
 
         Toast.makeText(MainActivity.this, "앱을 종료하시려면 한번 더 누르세요 ", Toast.LENGTH_SHORT).show();
@@ -45,8 +44,6 @@ public class MainActivity extends Activity {
             show2.setVisibility(View.GONE);
             show3.setVisibility(View.GONE);
         }
-
-
     }
 
     public void Main_Btn_click(View v){

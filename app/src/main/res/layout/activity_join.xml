@@ -16,11 +16,13 @@
         android:layout_width="match_parent"
         android:background="#E91E63"
         android:layout_height="1dp"/>
+
     <TextView
+        android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="아이디는 12자이내로 입력해주세요"
+        android:text="아이디는 10자이내로 입력해주세요"
         android:textStyle="bold" />
 
     <LinearLayout
@@ -45,7 +47,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="비밀번호는 10자이내로 입력해주세요"
+        android:text="비밀번호는 12자이내로 입력해주세요"
         android:textColor="#212121" />
 
     <LinearLayout
@@ -135,7 +137,7 @@
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:gravity="center"
-            android:text="연락처 "
+            android:text="연락처"
             android:textSize="14dp" />
 
         <EditText
@@ -151,6 +153,33 @@
             android:padding="10dp"
             android:textColor="#ffffff" />
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_weight="1"
+        android:gravity="left|center">
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="코드번호"
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/Join_CODE"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="발급받은 코드 번호(5자리)"
+            android:inputType="phone"
+            android:maxLength="5"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
 

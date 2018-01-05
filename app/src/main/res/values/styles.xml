@@ -20,7 +20,7 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18dp</item>
         <item name="android:textColor">#46adea</item>
-        <item name="android:background">@drawable/button</item>
+        <item name="android:background">@drawable/main_btn_custom</item>
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">58dp</item>
 
