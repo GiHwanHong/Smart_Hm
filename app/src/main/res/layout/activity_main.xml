@@ -1,58 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@drawable/main_img"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/main_show"
+        android:layout_width="match_parent"
+        android:layout_height="230dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="66dp">
+
+        <Button
+            android:id="@+id/main_login"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="27dp"
+            android:onClick="Main_Btn_click"
+            android:text="LOGIN" />
+
+        <Button
+            android:id="@+id/main_signup"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/main_login"
+            android:layout_marginBottom="28dp"
+            android:onClick="Main_Btn_click"
+            android:text="SIGN UP" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/show1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:layout_height="230dp"
+        android:layout_alignParentBottom="true"
+        android:visibility="gone"
+        android:layout_toEndOf="@+id/main_show"
+        android:layout_marginBottom="66dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello Nice to See u" />
+        <Button
+            android:id="@+id/house_holder"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="21dp"
+            android:onClick="Main_Btn_click"
+            android:text="세대주" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/house_holder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Main_Btn_click"
-                android:text="세대주" />
-
-            <Button
-                android:id="@+id/house_member"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Main_Btn_click"
-                android:text="구성원" />
-        </LinearLayout>
-    </LinearLayout>
+        <Button
+            android:id="@+id/house_member"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/house_holder"
+            android:layout_marginTop="24dp"
+            android:onClick="Main_Btn_click"
+            android:text="구성원" />
+    </RelativeLayout>
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/show2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="230dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="85dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:visibility="gone">
 
         <LinearLayout
+            android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="25dp"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ID : " />
@@ -65,15 +96,21 @@
                 android:hint="아이디"
                 android:imeOptions="actionNext"
                 android:maxLength="10"
-                android:nextFocusDown="@+id/house_holderpw" />
+                android:nextFocusDown="@+id/house_holderpw"
+                android:selectAllOnFocus="true" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/linearLayout3"
+            android:layout_marginTop="14dp"
             android:gravity="center">
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="PW : " />
@@ -84,71 +121,68 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:hint="비밀번호"
-                android:inputType="numberPassword"
+                android:imeOptions="actionDone"
                 android:maxLength="10" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center">
+        <Button
+            android:id="@+id/login_holder"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:onClick="Main_Btn_click"
+            android:text="로그인" />
 
-            <Button
-                android:id="@+id/login_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Main_Btn_click"
-                android:text="로그인" />
 
-            <Button
-                android:id="@+id/join_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Main_Btn_click"
-                android:text="회원가입" />
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+
+    <RelativeLayout
         android:id="@+id/show3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="66dp"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginTop="24dp"
+            android:gravity="center">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="CODE : " />
-
-                <EditText
-                    android:id="@+id/member_code"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:hint="코드입력"
-                    android:imeOptions="actionDone"
-                    android:inputType="numberPassword"
-                    android:maxLength="5" />
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/login_member"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="Main_Btn_click"
-                android:text="로그인" />
+                android:text="CODE : " />
+
+            <EditText
+                android:id="@+id/member_code"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:hint="코드입력"
+                android:imeOptions="actionDone"
+                android:inputType="numberPassword"
+                android:maxLength="5" />
         </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+
+        <Button
+            android:id="@+id/login_member"
+            style="@style/CustomTxtView_Main_Btn"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="29dp"
+            android:onClick="Main_Btn_click"
+            android:text="로그인" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

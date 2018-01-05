@@ -22,8 +22,6 @@ import com.kakao.util.KakaoParameterException;
  * Created by GiHwan on 2017. 12. 27..
  */
 
-
-
 public class LoginActivity extends ActivityGroup {
 
     TabHost tabhost1;

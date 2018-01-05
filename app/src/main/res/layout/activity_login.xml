@@ -27,8 +27,12 @@
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
+            <View
+                android:background="#000000"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
             </FrameLayout>
+
         </LinearLayout>
     </TabHost>
 </RelativeLayout>
