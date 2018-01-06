@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
@@ -30,7 +31,6 @@
         <activity android:name=".MypageActivity"></activity>
         <activity android:name=".AdselectActivity"></activity>
         <activity android:name=".SearchActivity"></activity>
-        <activity android:name=".EmptyActivity"></activity>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"

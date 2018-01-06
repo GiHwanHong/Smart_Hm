@@ -62,13 +62,19 @@ public class LoginActivity extends ActivityGroup {
             public void onTabChanged(String tabId) {
                 switch (tabId) {
                     case "tab1tag":
-                        Toast.makeText(getApplicationContext(), getString(R.string.tab1) + "탭입니다 ", Toast.LENGTH_SHORT).show();
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text(getString(R.string.tab1))
+                                .show(LoginActivity.this);
                         break;
                     case "tab2tag":
-                        Toast.makeText(getApplicationContext(), getString(R.string.tab2) + "탭입니다 ", Toast.LENGTH_SHORT).show();
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text(getString(R.string.tab2))
+                                .show(LoginActivity.this);
                         break;
                     case "tab3tag":
-                        Toast.makeText(getApplicationContext(), getString(R.string.tab3) + "탭입니다 ", Toast.LENGTH_SHORT).show();
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text(getString(R.string.tab3))
+                                .show(LoginActivity.this);
                         break;
 
                 }

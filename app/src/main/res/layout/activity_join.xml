@@ -1,21 +1,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/join_img"
     android:orientation="vertical"
     android:padding="10dp">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:gravity="center"
+        android:padding="10dp"
         android:text="회원가입을 진행합니다."
+        android:textColor="#FFF9C4"
         android:textSize="20dp" />
 
     <View
         android:layout_width="match_parent"
-        android:background="#E91E63"
-        android:layout_height="1dp"/>
+        android:layout_height="2dp"
+        android:background="#E91E63" />
 
     <TextView
         android:id="@+id/textView5"
@@ -23,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="아이디는 10자이내로 입력해주세요"
-        android:textStyle="bold" />
+        android:textColor="#CDDC39" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,16 +34,22 @@
         android:layout_weight="1"
         android:gravity="center">
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/Join_Id"
+            style="@style/Custom_Join_Edit"
             android:layout_width="wrap_content"
-            android:layout_height="42dp"
             android:ems="10"
-            android:hint="아이디"
+            android:hint="아이디를 입력해주세요"
             android:inputType="text"
-            android:maxLength="12"
-            android:padding="10dp"
-            android:selectAllOnFocus="true" />
+            android:maxLength="10"
+            android:selectAllOnFocus="true"
+
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="아이디 입력중.."
+            app:met_maxCharacters="10"
+            app:met_primaryColor="#FF4081"
+            app:met_underlineColor="#BBDEFB" />
 
     </LinearLayout>
 
@@ -48,55 +57,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="비밀번호는 12자이내로 입력해주세요"
-        android:textColor="#212121" />
+        android:textColor="#CDDC39" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:gravity="center">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/Join_Pw1"
+            style="@style/Custom_Join_Edit"
+            android:layout_width="150dp"
+            android:layout_alignBaseline="@+id/Join_Pw2"
+            android:layout_alignBottom="@+id/Join_Pw2"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="12dp"
+            android:hint="비밀번호 입력"
+            android:inputType="textPassword"
+            android:maxLength="12"
+
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="비밀번호 입력중.."
+            app:met_maxCharacters="11"
+            app:met_primaryColor="#FF4081"
+            app:met_underlineColor="#BBDEFB" />
+        />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/Join_Pw2"
+            style="@style/Custom_Join_Edit"
+            android:layout_width="160dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:hint="비밀번호 재입력"
+            android:inputType="textPassword"
+            android:maxLength="12"
+
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="비밀번호 입력중.."
+            app:met_maxCharacters="11"
+            app:met_primaryColor="#FF4081"
+            app:met_underlineColor="#BBDEFB" />
+        />
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_weight="1"
-        android:gravity="left|center">
-
-        <EditText
-            android:id="@+id/Join_Pw1"
-            android:layout_width="100dp"
-            android:layout_height="45dp"
-            android:hint="비밀번호"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:maxLength="10"
-            android:padding="10dp"
-            android:selectAllOnFocus="true"
-            android:textColor="#ffffff" />
-
-        <EditText
-            android:id="@+id/Join_Pw2"
-            android:layout_width="200dp"
-            android:layout_height="45dp"
-            android:hint="다시한번 입력해주세요"
-            android:imeOptions="actionNext"
-            android:inputType="textPassword"
-            android:maxLength="10"
-            android:padding="10dp"
-            android:selectAllOnFocus="true" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:gravity="center">
 
-        <EditText
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/Join_Name"
-            android:layout_width="100dp"
-            android:layout_height="42dp"
+            style="@style/Custom_Join_Edit"
+            android:layout_width="80dp"
             android:layout_weight="3"
             android:hint="이름을 입력해주세요"
-            android:gravity="center"
             android:inputType="text"
-            android:maxLength="4"
-            android:padding="10dp"
-            android:selectAllOnFocus="true" />
+            android:maxLength="5"
+
+            app:met_baseColor="@android:color/white"
+            app:met_floatingLabel="highlight"
+            app:met_floatingLabelText="이름 입력중.."
+            app:met_maxCharacters="4"
+            app:met_primaryColor="#FF4081"
+            app:met_underlineColor="#BBDEFB" />
+        />
 
     </LinearLayout>
 
@@ -108,15 +138,14 @@
 
         <TextView
             android:id="@+id/Join_Addr_Show"
+            style="@style/Custom_Join_txtV"
             android:layout_width="wrap_content"
-            android:layout_height="60dp"
+            android:layout_height="50dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:gravity="center"
             android:maxLength="20"
             android:padding="10dp"
-            android:text="주소입력TextView"
-            android:textSize="18dp" />
+            android:text="주소가 표시 됩니다." />
 
         <Button
             android:id="@+id/Join_Addr_Btn"
@@ -124,24 +153,24 @@
             android:layout_height="50dp"
             android:onClick="Join_Btn_Click"
             android:text="주소찾기"
-            android:textStyle="bold" />
+            style="@style/Custom_Join_Btn"
+            />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:layout_weight="1"
-        android:gravity="left|center">
+        android:gravity="center">
 
         <TextView
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="연락처"
-            android:textSize="14dp" />
+            style="@style/Custom_Join_txtV"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="연락처" />
 
         <EditText
-            android:id="@+id/Join_PN"
+            android:id="@+id/Join_Pn"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
@@ -150,24 +179,22 @@
             android:hint="핸드폰번호"
             android:inputType="phone"
             android:maxLength="15"
-            android:padding="10dp"
-            android:textColor="#ffffff" />
+            android:padding="10dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="35dp"
         android:layout_weight="1"
-        android:gravity="left|center">
+        android:gravity="center">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:gravity="center"
-            android:text="코드번호"
-            android:textSize="14dp" />
+            style="@style/Custom_Join_txtV"
+            android:layout_width="120dp"
+            android:layout_height="45dp"
+            android:text="코드번호" />
 
         <EditText
             android:id="@+id/Join_CODE"
@@ -178,8 +205,7 @@
             android:gravity="center"
             android:hint="발급받은 코드 번호(5자리)"
             android:inputType="phone"
-            android:maxLength="5"
-            android:textColor="#ffffff" />
+            android:maxLength="5" />
     </LinearLayout>
 
 
@@ -194,9 +220,11 @@
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_weight="1"
+            style="@style/Custom_Join_Btn"
+
             android:onClick="Join_Btn_Click"
             android:text="가입"
-            android:textStyle="bold" />
+            />
 
         <Button
             android:id="@+id/Join_Cancel"
@@ -204,17 +232,10 @@
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            style="@style/Custom_Join_Btn"
             android:onClick="Join_Btn_Click"
-            android:text="취소"
-            android:textStyle="bold" />
+            android:text="취소" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/Show_DB_Res"
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:text="회원가입 처리 메시지 " />
 </LinearLayout>

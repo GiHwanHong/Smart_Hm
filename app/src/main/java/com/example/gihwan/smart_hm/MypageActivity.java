@@ -38,8 +38,8 @@ public class MypageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        Code_Val = (EditText) findViewById(R.id.code_val);
-        Address = (TextView) findViewById(R.id.Address);
+        Code_Val = (EditText) findViewById(R.id.Mypage_Code);
+        Address = (TextView) findViewById(R.id.Mypage_Addr_Show);
 
 
         try {
@@ -52,7 +52,7 @@ public class MypageActivity extends Activity {
 
     public void Mypage_Btn_click(View v){
         switch (v.getId()){
-            case R.id.code_send:    // 카카오 버튼을 통해 코드번호를 보내기 위함
+            case R.id.Mypage_Btn:    // 카카오 버튼을 통해 코드번호를 보내기 위함
                 //Code_Val_send = Code_Val.getText().toString();
                 final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
                         = kakaoLink.createKakaoTalkLinkMessageBuilder();
@@ -68,14 +68,18 @@ public class MypageActivity extends Activity {
                 startActivity(new Intent(this,LoginActivity.class));
                 finish();
                 break;
-            case R.id.Mypage_Leave:     // 회원 탈퇴 버튼 클릭시
-                Toast.makeText(getApplicationContext(), " DataBase Delete 처리가 되어야합니다", Toast.LENGTH_SHORT).show();
+            case R.id.Mypage_Delete:     // 회원 탈퇴 버튼 클릭시
+                com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                        .text(" DataBase Delete 처리가 되어야합니다")
+                        .show(MypageActivity.this);
                 break;
             case R.id.Mypage_Update:    // 회원 정보 변경 버튼 클릭시
-                Toast.makeText(getApplicationContext(), " DataBase Update 처리가 되어야합니다", Toast.LENGTH_SHORT).show();
+                com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                        .text(" DataBase Update 처리가 되어야합니다")
+                        .show(MypageActivity.this);
                 break;
 
-            case R.id.inAddress:        // 회원 주소 찾기 버튼 클릭시
+            case R.id.Mypage_Addr_Btn:        // 회원 주소 찾기 버튼 클릭시
                 Intent in_getData = new Intent(MypageActivity.this, AdselectActivity.class);
                 startActivityForResult(in_getData, 0);
                 break;

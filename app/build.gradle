@@ -42,5 +42,6 @@ dependencies {
 
     //Android Design Support Library을 사용하기 위해서
     compile 'com.android.support:design:24.1.1'
+    compile 'com.nispok:snackbar:2.11.+' //SnackBar
 
 }
