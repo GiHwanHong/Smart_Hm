@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:background="@drawable/join_img"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
@@ -26,8 +26,8 @@
         <ImageButton
             android:id="@+id/Mypage_Btn"
             android:layout_width="wrap_content"
-            android:onClick="Mypage_Btn_click"
             android:layout_height="wrap_content"
+            android:onClick="Mypage_Btn_click"
             android:src="@drawable/kakaolink_btn_small" />
     </LinearLayout>
 
@@ -36,6 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#E91E63" />
+
     <TextView
         android:id="@+id/textView5"
         android:layout_width="match_parent"
@@ -59,7 +60,6 @@
             android:inputType="text"
             android:maxLength="10"
             android:selectAllOnFocus="true"
-
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelText="아이디 입력중.."
@@ -117,7 +117,6 @@
             app:met_maxCharacters="11"
             app:met_primaryColor="#FF4081"
             app:met_underlineColor="#BBDEFB" />
-        />
     </RelativeLayout>
 
     <LinearLayout
@@ -141,7 +140,6 @@
             app:met_maxCharacters="4"
             app:met_primaryColor="#FF4081"
             app:met_underlineColor="#BBDEFB" />
-        />
 
     </LinearLayout>
 
@@ -164,12 +162,11 @@
 
         <Button
             android:id="@+id/Mypage_Addr_Btn"
+            style="@style/Custom_Join_Btn"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:onClick="Mypage_Btn_click"
-            android:text="주소변경"
-            style="@style/Custom_Join_Btn"
-            />
+            android:text="주소변경" />
     </LinearLayout>
 
     <LinearLayout
@@ -214,7 +211,7 @@
         <EditText
             android:id="@+id/Mypage_Code"
             android:layout_width="wrap_content"
-            android:layout_height="40dp"
+            android:layout_height="44dp"
             android:layout_marginLeft="10dp"
             android:ems="10"
             android:gravity="center"
@@ -231,33 +228,33 @@
 
         <Button
             android:id="@+id/Mypage_Update"
+            style="@style/Custom_Mypage_Btn"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_weight="1"
-            style="@style/Custom_Mypage_Btn"
             android:onClick="Mypage_Btn_click"
             android:text="변경"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/Mypage_Cancel"
+            style="@style/Custom_Mypage_Btn"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="Mypage_Btn_click"
-            style="@style/Custom_Mypage_Btn"
             android:text="취소"
             android:textStyle="bold" />
 
         <Button
             android:id="@+id/Mypage_Delete"
+            style="@style/Custom_Mypage_Btn"
             android:layout_width="160dp"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="Mypage_Btn_click"
-            style="@style/Custom_Mypage_Btn"
             android:text="계정탈퇴"
             android:textStyle="bold" />
     </LinearLayout>

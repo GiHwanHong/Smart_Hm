@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/join_img">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="센서를 제어합니다"
+        android:textColor="#FFF9C4"
+        android:textSize="25dp"
+        android:textStyle="bold" />
+
 
     <TextView
         android:id="@+id/Title1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_height="47dp"
+        android:layout_above="@+id/relative_lay1"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/join_txt_custom"
         android:gravity="center"
         android:text="LED 제어"
+        android:textColor="#FFF9C4"
         android:textSize="20dp" />
+
 
     <RelativeLayout
         android:id="@+id/relative_lay1"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_above="@+id/Title2"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/Title1"
+        android:layout_marginBottom="17dp"
         android:gravity="center">
 
         <TextView
             android:id="@+id/Sub_LED_Title1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Custom_State_txtV"
             android:layout_alignStart="@+id/switch_L_r1"
             android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="현관"
-            android:textSize="20dp" />
+            android:text="현관" />
 
         <ToggleButton
             android:id="@+id/switch_L_r1"
@@ -44,10 +65,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/switch_L_r1"
             android:layout_alignStart="@+id/switch_L_r2"
+            style="@style/Custom_State_txtV"
             android:layout_marginStart="15dp"
-            android:gravity="center"
-            android:text="거실"
-            android:textSize="20dp" />
+            android:text="거실" />
 
         <ToggleButton
             android:id="@+id/switch_L_r2"
@@ -65,9 +85,8 @@
             android:layout_above="@+id/switch_L_r3"
             android:layout_alignStart="@+id/switch_L_r3"
             android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="부엌"
-            android:textSize="20dp" />
+            style="@style/Custom_State_txtV"
+            android:text="부엌" />
 
         <ToggleButton
             android:id="@+id/switch_L_r3"
@@ -85,10 +104,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@+id/switch_L_r4"
             android:layout_alignStart="@+id/switch_L_r4"
+            style="@style/Custom_State_txtV"
             android:layout_marginStart="20dp"
-            android:gravity="center"
-            android:text="방"
-            android:textSize="20dp" />
+            android:text="방"/>
 
         <ToggleButton
             android:id="@+id/switch_L_r4"
@@ -105,22 +123,22 @@
     <TextView
         android:id="@+id/Title2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Title1"
-        android:layout_below="@+id/relative_lay1"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="47dp"
+        android:layout_above="@+id/relative_lay2"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/join_txt_custom"
         android:gravity="center"
         android:text="온도 제어"
+        android:textColor="#FFF9C4"
         android:textSize="20dp" />
 
     <RelativeLayout
         android:id="@+id/relative_lay2"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/Title2">
+        android:layout_above="@+id/Title3"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/Sub_TMP_Title1"
@@ -130,9 +148,8 @@
             android:layout_centerVertical="true"
             android:layout_margin="15dp"
             android:layout_marginStart="11dp"
-            android:gravity="center"
-            android:text="거실 온도"
-            android:textSize="20dp" />
+            style="@style/Custom_State_txtV"
+            android:text="거실 온도" />
 
         <TextView
             android:id="@+id/Tmp_r1"
@@ -143,6 +160,7 @@
             android:layout_marginBottom="20dp"
             android:layout_marginStart="26dp"
             android:layout_marginTop="5dp"
+            android:textColor="#000"
             android:text="거실의 온도입니다" />
 
         <TextView
@@ -154,9 +172,8 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_marginStart="19dp"
-            android:gravity="center"
-            android:text="방 온도"
-            android:textSize="20dp" />
+            style="@style/Custom_State_txtV"
+            android:text="방 온도" />
 
         <TextView
             android:id="@+id/Tmp_r2"
@@ -166,6 +183,7 @@
             android:layout_alignBottom="@+id/Tmp_r1"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="35dp"
+            android:textColor="#000"
             android:text="방의 온도입니다" />
 
     </RelativeLayout>
@@ -174,49 +192,50 @@
     <TextView
         android:id="@+id/Title3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/Title1"
-        android:layout_below="@+id/relative_lay2"
-        android:layout_marginBottom="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="47dp"
+        android:layout_above="@+id/relativeLayout"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="14dp"
+        android:background="@drawable/join_txt_custom"
         android:gravity="center"
         android:text="가스 제어"
+        android:textColor="#FFF9C4"
         android:textSize="20dp" />
 
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:layout_below="@+id/Title3"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">
 
         <TextView
             android:id="@+id/Sub_GAS_Title1"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:text="가스1"
-            android:gravity="center"
-            android:layout_marginStart="13dp"
             android:layout_above="@+id/switch_G_r1"
-            android:layout_alignStart="@+id/switch_G_r1" />
+            android:layout_alignStart="@+id/switch_G_r1"
+            android:layout_marginStart="13dp"
+            style="@style/Custom_State_txtV"
+            android:text="가스1" />
 
         <ToggleButton
             android:id="@+id/switch_G_r1"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:onClick="State_ToggleBtn_click"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="135dp"
             android:layout_marginStart="49dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true" />
+            android:onClick="State_ToggleBtn_click" />
 
         <TextView
             android:id="@+id/Sub_GAS_Title2"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
             android:text="가스2"
-            android:gravity="center"
-            android:layout_marginStart="14dp"
+            style="@style/Custom_State_txtV"
             android:layout_above="@+id/switch_G_r2"
             android:layout_alignStart="@+id/switch_G_r2" />
 
@@ -224,13 +243,11 @@
             android:id="@+id/switch_G_r2"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:onClick="State_ToggleBtn_click"
-            android:layout_marginLeft="135dp"
             android:layout_alignBaseline="@+id/switch_G_r1"
             android:layout_alignBottom="@+id/switch_G_r1"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="75dp" />
-
+            android:layout_marginEnd="75dp"
+            android:layout_marginLeft="135dp"
+            android:onClick="State_ToggleBtn_click" />
     </RelativeLayout>
-
 </RelativeLayout>

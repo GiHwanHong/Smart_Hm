@@ -63,17 +63,17 @@ public class LoginActivity extends ActivityGroup {
                 switch (tabId) {
                     case "tab1tag":
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
-                                .text(getString(R.string.tab1))
+                                .text("이 곳에서는 센서를 제어할 수 있습니다")
                                 .show(LoginActivity.this);
                         break;
                     case "tab2tag":
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
-                                .text(getString(R.string.tab2))
+                                .text("이 곳에서는 전기 사용량을 확인 할 수 있습니다")
                                 .show(LoginActivity.this);
                         break;
                     case "tab3tag":
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
-                                .text(getString(R.string.tab3))
+                                .text("회원의 정보를 수정 및 발급받은 코드를 전송할 수 있습니다.")
                                 .show(LoginActivity.this);
                         break;
 

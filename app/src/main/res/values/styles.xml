@@ -75,6 +75,10 @@
         <item name="android:textColor">#C8E6C9</item>
     </style>
     <!-- 마이페이지 창의 커스텀 입력 창 -->
-    <!-- 마이페이지 창의 커스텀 입력 창 -->
+    <style name="Custom_State_txtV">
+        <item name="android:textColor">#FFF9C4</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">20dp</item>
+    </style>
 
 </resources>
