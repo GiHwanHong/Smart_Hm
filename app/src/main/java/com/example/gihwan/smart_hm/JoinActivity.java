@@ -74,7 +74,7 @@ public class JoinActivity extends Activity {
         Join_PN.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         Join_PN.setText(phoneNum);
 
-        //코드 자동 생성을 위한 코드.
+        //코드 자동 생성을 위하여 입력을 방지.
         Join_CODE.setClickable(false);
         Join_CODE.setFocusable(false);
         getRandomCode();

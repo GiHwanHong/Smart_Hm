@@ -28,7 +28,9 @@ public class MypageActivity extends Activity {
 
 
     private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
-    EditText Code_Val ;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
+    EditText MyPage_CODE ;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
+
+
     private String str = null;
     private TextView Address;
     //String Code_Val_send = null;
@@ -38,7 +40,7 @@ public class MypageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        Code_Val = (EditText) findViewById(R.id.Mypage_Code);
+        MyPage_CODE = (EditText) findViewById(R.id.Mypage_Code);
         Address = (TextView) findViewById(R.id.Mypage_Addr_Show);
 
 
@@ -48,6 +50,9 @@ public class MypageActivity extends Activity {
             e.printStackTrace();
         }
 
+        //코드 자동 생성을 위하여 입력을 방지.
+        MyPage_CODE.setClickable(false);
+        MyPage_CODE.setFocusable(false);
     }
 
     public void Mypage_Btn_click(View v){
@@ -57,7 +62,7 @@ public class MypageActivity extends Activity {
                 final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
                         = kakaoLink.createKakaoTalkLinkMessageBuilder();
                 try {
-                    kakaoTalkLinkMessageBuilder.addText("전송된 코드는 \n => "+Code_Val.getText().toString());
+                    kakaoTalkLinkMessageBuilder.addText("전송된 코드는 \n => "+MyPage_CODE.getText().toString());
                     kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);   // 메시지 전송
                 } catch (KakaoParameterException e) {
                     e.printStackTrace();
