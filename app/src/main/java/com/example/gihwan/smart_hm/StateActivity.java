@@ -23,7 +23,6 @@ public class StateActivity extends AppCompatActivity {
         setContentView(R.layout.activity_state);
 
 
-
     }
 
     public void State_ToggleBtn_click(View v){

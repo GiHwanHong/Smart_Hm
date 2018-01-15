@@ -201,6 +201,7 @@ public class JoinActivity extends Activity {
 
         @Override
         protected String doInBackground(String... params) {
+
             try {
                 for (int i = 0; i < 3; i++) {
                     progressDialog.setProgress(i * 30);
@@ -224,7 +225,8 @@ public class JoinActivity extends Activity {
             String postParameters = "usr_id=" + usr_id + "&usr_pw1=" + usr_pw1 + "&usr_pw2=" + usr_pw2 + "&usr_name=" + usr_name + "&usr_addr=" + usr_addr + "&usr_phone="
                     + usr_phone + "&usr_joinday=" + usr_joinday + "&usr_ip=" + usr_ip + "&usr_code=" + usr_code;
 
-            Log.e("postParameters : ", postParameters);
+            Log.e("Join_postParameters : ", postParameters);
+
             try {
 
                 URL url = new URL(server_URL);

@@ -156,7 +156,6 @@
             android:layout_height="50dp"
             android:layout_marginRight="5dp"
             android:layout_weight="1"
-            android:maxLength="20"
             android:padding="10dp"
             android:text="주소가 표시 됩니다." />
 
