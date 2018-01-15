@@ -24,13 +24,14 @@
             android:textSize="20dp" />
 
         <ImageButton
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:id="@+id/Mypage_Btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
             android:onClick="Mypage_Btn_click"
             android:src="@drawable/kakaolink_btn_small" />
     </LinearLayout>
-
 
     <View
         android:layout_width="match_parent"
@@ -92,7 +93,6 @@
             android:hint="비밀번호 입력"
             android:inputType="textPassword"
             android:maxLength="12"
-
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelText="비밀번호 입력중.."
@@ -189,7 +189,7 @@
             android:gravity="center"
             android:hint="핸드폰번호"
             android:inputType="phone"
-            android:maxLength="15"
+            android:maxLength="13"
             android:padding="10dp" />
 
     </LinearLayout>
