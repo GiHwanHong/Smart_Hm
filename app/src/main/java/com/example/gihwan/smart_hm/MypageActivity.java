@@ -43,7 +43,7 @@ public class MypageActivity extends Activity {
     EditText Mypage_PW1, Mypage_PW2, Mypage_NAME;
     TextView Mypage_ADDR_Show;
 
-    private String str = "";        // 주소 값을 전달 받기 위함
+    private String str = "";         // 주소 값을 전달 받아 수정하기 위함
     private String usr_id = "";       // 사용자의 값을 전달 하기 위함
     private String usr_code = "";
 
@@ -88,6 +88,7 @@ public class MypageActivity extends Activity {
         } catch (KakaoParameterException e) {
             e.printStackTrace();
         }
+
         //코드 자동 생성을 위하여 입력을 방지.
         Mypage_CODE.setClickable(false);
         Mypage_CODE.setFocusable(false);
@@ -110,14 +111,21 @@ public class MypageActivity extends Activity {
                 startActivity(new Intent(this, MainActivity.class));
                 finish();
                 break;
+
             case R.id.Mypage_Delete:     // 회원 탈퇴 버튼 클릭 시
                 new Json_Delete().execute(usr_code_json);
                 break;
+
             case R.id.Mypage_Update:    // 회원 정보 변경 버튼 클릭시
-                com.nispok.snackbar.Snackbar.with(getApplicationContext())
-                        .text(" DataBase Update 처리가 되어야합니다")
-                        .show(MypageActivity.this);
+                usr_id_json = Mypage_ID.getText().toString();
+                usr_pw_json = Mypage_PW1.getText().toString();
+                usr_pw_r_json =  Mypage_PW2.getText().toString();
+                usr_name_json =  Mypage_NAME.getText().toString();
+                usr_phone_json = Mypage_PN.getText().toString();
+                usr_code_json =Mypage_CODE.getText().toString();
+                new Json_Update().execute(usr_id_json,usr_pw_json,usr_pw_r_json,usr_name_json,usr_addr_json,usr_phone_json,usr_code_json);
                 break;
+
             case R.id.Mypage_Addr_Btn:        // 회원 주소 변경 버튼 클릭시
                 Intent in_getData = new Intent(MypageActivity.this, AdselectActivity.class);
                 startActivityForResult(in_getData, 0);
@@ -207,6 +215,104 @@ public class MypageActivity extends Activity {
     }
     ///////////////////////////----Delete AsyncTask 끝----////////////////////////////////
 
+    public class Json_Update extends AsyncTask<String,Void,String>{
+        private ProgressDialog Back_dialog = new ProgressDialog(MypageActivity.this);
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Back_dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            Back_dialog.setMessage("잠시만 기다려 주세요.");
+            Back_dialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(String res) {
+            super.onPostExecute(res);
+            Back_dialog.dismiss();
+            Log.e("Update_Post Value : ", res);
+            com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                    .text(res)
+                    .show(MypageActivity.this);
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                for (int i = 0; i < 3; i++) {
+                    Back_dialog.setProgress(i * 30);
+                    Thread.sleep(500);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            String usr_id = (String) params[0];
+            String usr_pw1 = (String) params[1];
+            String usr_pw2 = (String) params[2];
+            String usr_name = (String) params[3];
+            String usr_addr = (String) params[4];
+            String usr_phone = (String) params[5];
+            String usr_code = (String) params[6];
+
+            String server_URL = "http://13.124.195.151/hupdate.php";
+            String postParameters = "usr_id=" + usr_id + "&usr_pw1=" + usr_pw1 + "&usr_pw2=" + usr_pw2 + "&usr_name=" + usr_name + "&usr_addr=" + usr_addr + "&usr_phone="
+                    + usr_phone + "&usr_code=" + usr_code;
+
+            Log.e("Update_postParameters : ", postParameters);
+
+            try {
+
+                URL url = new URL(server_URL);
+                HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
+
+                httpURLConnection.setReadTimeout(5000);
+                httpURLConnection.setConnectTimeout(5000);
+                httpURLConnection.setRequestMethod("POST");
+                httpURLConnection.setDoInput(true);
+                httpURLConnection.connect();
+
+
+                OutputStream outputStream = httpURLConnection.getOutputStream();
+                outputStream.write(postParameters.getBytes("UTF-8"));
+                outputStream.flush();
+                outputStream.close();
+
+
+                int responseStatusCode = httpURLConnection.getResponseCode();
+                Log.d(TAG, "POST response code - " + responseStatusCode);
+
+                InputStream inputStream;
+                if (responseStatusCode == HttpURLConnection.HTTP_OK) {
+                    inputStream = httpURLConnection.getInputStream();
+                } else {
+                    inputStream = httpURLConnection.getErrorStream();
+                }
+
+                  /* 서버 -> 안드로이드 파라메터값 전달 */
+                InputStreamReader inputStreamReader = new InputStreamReader(inputStream, "UTF-8");
+                BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                StringBuilder sb = new StringBuilder();
+                String line = null;
+
+                while ((line = bufferedReader.readLine()) != null) {
+                    sb.append(line);
+                }
+
+                bufferedReader.close();
+
+                return sb.toString();
+
+            } catch (Exception e) {
+
+                Log.d(TAG, "Update Data: Error ", e);
+
+                return new String("Error: " + e.getMessage());
+            }
+        }
+    }
+
+    ///////////////////////////----Update AsyncTask 끝----////////////////////////////////
     public class Json_select extends AsyncTask<String, Void, String> {
 
         private ProgressDialog progressDialog = new ProgressDialog(MypageActivity.this);
@@ -250,7 +356,7 @@ public class MypageActivity extends Activity {
             Log.e("모든 정보를 얻어 온다", res);
             progressDialog.dismiss();
         }
-    }
+    }       // 서버 -> 안드로이드로 세밀하게 받아오기 위한 코드
 
     public String getJsonText() {
         StringBuffer sb = new StringBuffer();
@@ -404,9 +510,14 @@ public class MypageActivity extends Activity {
         switch (requestCode) {       // startActivityForResult에서 넘긴 값을 처리하기 위함
             case 0:                  // Daum에서 받은 주소 값을 받기 위함.
                 if (resultCode == RESULT_OK) {
-                    str = data.getStringExtra("send_id");
+                    str = data.getStringExtra("myaddr");
+                    usr_addr_json=str;
                     Log.e("잘 받았어 고마워 : ", str);
-                    Mypage_ADDR_Show.setText(str);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Mypage_ADDR_Show.setText(str);
+                        }});
                 }
                 break;
         }

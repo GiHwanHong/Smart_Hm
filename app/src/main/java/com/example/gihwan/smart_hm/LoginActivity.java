@@ -110,8 +110,6 @@ public class LoginActivity extends ActivityGroup {
                                 .show(LoginActivity.this);
                         break;
                     case "tab3tag":
-                        /*Send_Data send_data = new Send_Data();
-                        send_data.execute();*/
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
                                 .text("회원의 정보를 수정 및 발급받은 코드를 전송할 수 있습니다.")
                                 .show(LoginActivity.this);
@@ -121,43 +119,7 @@ public class LoginActivity extends ActivityGroup {
             }
         });
     }
-/*
-    // 보이지 않게 뒤에서 intent를 통해 값을 전달.
-    public class Send_Data extends AsyncTask<String, Void, String> {
-        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            progressDialog.setMessage("잠시만 기다려 주세요.");
-            progressDialog.show();
-        }
-
-        @Override
-        protected void onPostExecute(String res) {
-            super.onPostExecute(res);
-            progressDialog.dismiss();
-
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            try {
-                for (int i = 0; i < 3; i++) {
-                    progressDialog.setProgress(i * 30);
-                    Thread.sleep(500);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-    }*/
 }
-
-
 
 
     /*@Override                     // 툴바 사용시 사용할 것

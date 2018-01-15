@@ -76,7 +76,7 @@ public class AdselectActivity extends Activity {
         switch (v.getId()) {
             case R.id.sendData:
                 Intent in_send = new Intent(AdselectActivity.this, MypageActivity.class);
-                in_send.putExtra("address", res);
+                in_send.putExtra("myaddr", res);
                 Log.e("주소 값을 보낼께 : ", res);
                 setResult(RESULT_OK,in_send);
                 finish();
