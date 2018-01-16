@@ -42,6 +42,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="android:background">@null</item>
         <item name="android:textColor">#FFFFFF</item>
+        <item name="android:inputType">textPassword</item>
     </style>
 
     <!-- 회원가입 창의 커스텀 텍스트 뷰 -->

@@ -3,10 +3,14 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
         <layer-list>
+            <!-- shadow (밑으로, 위로) : 그림자 -->
+
+            <!-- background (위로) -->
             <item android:bottom="3dp">
                 <shape android:padding="10dp" android:shape="rectangle">
                     <corners android:bottomLeftRadius="5dp" android:bottomRightRadius="5dp" android:topLeftRadius="4dp" android:topRightRadius="4dp" />
                     <solid android:color="#33000000" />
+                    <stroke android:width="2px" android:color="#FFFF" />
                 </shape>
             </item>
         </layer-list>

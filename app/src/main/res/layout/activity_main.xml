@@ -96,6 +96,7 @@
                 style="@style/Custom_Main_Edit"
                 android:hint="아이디"
                 android:lines="1"
+
                 android:maxLength="10"
                 android:selectAllOnFocus="true"
                 android:singleLine="true" />
@@ -127,7 +128,7 @@
                 style="@style/Custom_Main_Edit"
                 android:hint="비밀번호"
                 android:lines="1"
-                android:maxLength="10"
+                android:maxLength="12"
                 android:singleLine="true" />
         </LinearLayout>
 
@@ -196,8 +197,6 @@
             android:layout_marginBottom="29dp"
             android:onClick="Main_Btn_click"
             android:text="로그인" />
-
-
     </RelativeLayout>
 
 </RelativeLayout>

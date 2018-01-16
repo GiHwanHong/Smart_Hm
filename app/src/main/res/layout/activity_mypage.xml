@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:ems="10"
             android:hint="아이디를 입력해주세요"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:maxLength="10"
             android:selectAllOnFocus="true"
             app:met_baseColor="@android:color/white"
@@ -86,9 +86,6 @@
             android:id="@+id/Mypage_Pw1"
             style="@style/Custom_Join_Edit"
             android:layout_width="150dp"
-            android:layout_alignBaseline="@+id/Join_Pw2"
-            android:layout_alignBottom="@+id/Join_Pw2"
-            android:layout_alignParentStart="true"
             android:layout_marginStart="12dp"
             android:hint="비밀번호 입력"
             android:inputType="textPassword"
@@ -96,9 +93,11 @@
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelText="비밀번호 입력중.."
-            app:met_maxCharacters="11"
+            app:met_maxCharacters="12"
             app:met_primaryColor="#FF4081"
-            app:met_underlineColor="#BBDEFB" />
+            app:met_underlineColor="#BBDEFB"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/Mypage_Pw2"
@@ -114,7 +113,7 @@
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_floatingLabelText="비밀번호 입력중.."
-            app:met_maxCharacters="11"
+            app:met_maxCharacters="12"
             app:met_primaryColor="#FF4081"
             app:met_underlineColor="#BBDEFB" />
     </RelativeLayout>
@@ -132,7 +131,7 @@
             android:layout_weight="3"
             android:hint="이름을 입력해주세요"
             android:inputType="text"
-            android:maxLength="5"
+            android:maxLength="4"
 
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"

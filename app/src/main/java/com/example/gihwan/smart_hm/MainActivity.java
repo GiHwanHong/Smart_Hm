@@ -61,23 +61,9 @@ public class MainActivity extends Activity {
         usr_Id = (EditText)findViewById(R.id.house_holderid);       // 세대주의 아이디를 사용하기 위함.
         usr_Pw = (EditText)findViewById(R.id.house_holderpw);       // 세대주의 비밀번호를 사용하기 위함.
 
-        usr_Id.setFilters(new InputFilter[] {filter_main});
-        usr_Pw.setFilters(new InputFilter[] {filter_main});
-
         usr_Code = (EditText)findViewById(R.id.member_code);        // 구성원의 입력 코드를 사용하기 위함.
     }
 
-    // 영어만 입력하기 위한 필터 처리 해주는 코드
-    protected InputFilter filter_main= new InputFilter() {
-
-        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-            Pattern ps = Pattern.compile("^[a-zA-Z0-9]+$");
-            if (!ps.matcher(source).matches()) {
-                return "";
-            }
-            return null;
-        }
-    };
 
     @Override
     public void onBackPressed() { // 뒤로 가기 버튼 제어
