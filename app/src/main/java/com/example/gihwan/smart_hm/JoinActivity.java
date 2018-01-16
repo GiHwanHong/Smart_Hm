@@ -9,6 +9,9 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.telephony.TelephonyManager;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,6 +27,7 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TreeSet;
+import java.util.regex.Pattern;
 
 import static android.content.ContentValues.TAG;
 
@@ -35,7 +39,8 @@ public class JoinActivity extends Activity {
 
     TextView Addrshow_view;
 
-    EditText Join_ID, Join_NAME, Join_PN, Join_CODE;
+    EditText Join_ID, Join_NAME, Join_PN;
+    TextView Join_CODE;
     EditText Join_PW1, Join_PW2;
     String str = null;      // 주소 값을 전달 받기위한 변수
 
@@ -55,12 +60,19 @@ public class JoinActivity extends Activity {
 
         Addrshow_view = (TextView) findViewById(R.id.Join_Addr_Show);
 
+        // TextView Scrolling 가능하게 하기
+        Addrshow_view.setMovementMethod(new ScrollingMovementMethod().getInstance());
+
         Join_ID = (EditText) findViewById(R.id.Join_Id);      // 아이디 입력 EditText
         Join_PW1 = (EditText) findViewById(R.id.Join_Pw1);    // 비밀번호1 입력 EditText
         Join_PW2 = (EditText) findViewById(R.id.Join_Pw2);    // 비밀번호2 입력 EditText
         Join_NAME = (EditText) findViewById(R.id.Join_Name);   // 이름 입력 EditText
         Join_PN = (EditText) findViewById(R.id.Join_Pn);      // 핸드폰 번호 입력 EditText
-        Join_CODE = (EditText) findViewById(R.id.Join_CODE);  // 코드번호 입력 EditText
+        Join_CODE = (TextView) findViewById(R.id.Join_CODE);  // 코드번호 입력 EditText
+
+        Join_ID.setFilters(new InputFilter[] {filter_join});      // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
+        Join_PW1.setFilters(new InputFilter[] {filter_join});     // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
+        Join_PW2.setFilters(new InputFilter[] {filter_join});     // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
 
         Join_ID.requestFocus(); // 바로 올라오게 하기 위함.
 
@@ -74,9 +86,6 @@ public class JoinActivity extends Activity {
         Join_PN.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         Join_PN.setText(phoneNum);
 
-        //코드 자동 생성을 위하여 입력을 방지.
-        Join_CODE.setClickable(false);
-        Join_CODE.setFocusable(false);
         getRandomCode();
     }
 
@@ -157,9 +166,20 @@ public class JoinActivity extends Activity {
 
     }
 
+    // 영어만 입력하기 위한 필터 처리 해주는 코드
+    protected InputFilter filter_join= new InputFilter() {
 
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[a-zA-Z0-9]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
+
+    // 코드 생성하기 위함
     public void getRandomCode() {
-
         // size가 5이 되기 전에는 계속 루프를 돈다.
         // 다른 수 5개가 저장이 되면 루프를 탈출
         // Treeeset은 데이터를 집어 넣으면 기본적으로 오름차순(Ascending) 정렬

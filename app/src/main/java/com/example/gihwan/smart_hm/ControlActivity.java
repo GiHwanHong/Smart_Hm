@@ -12,7 +12,7 @@ import android.widget.ToggleButton;
  * Created by GiHwan on 2017. 12. 27..
  */
 
-public class StateActivity extends AppCompatActivity {
+public class ControlActivity extends AppCompatActivity {
 
     TextView TMP , Humidity;
     TextView State_Gas , State_Fire;
@@ -20,7 +20,7 @@ public class StateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_state);
+        setContentView(R.layout.activity_control);
 
         TMP = (TextView)findViewById(R.id.Tmp_r1);           // 온도 상태를 숫자로 나타내기 위한 Textview
         Humidity = (TextView)findViewById(R.id.Tmp_r2);      // 습도 상태를 숫자로 나타내기 위한 Textview

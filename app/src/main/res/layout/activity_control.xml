@@ -4,6 +4,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/join_img">
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
@@ -20,24 +27,27 @@
         android:textStyle="bold" />
 
     <View
+        android:id="@+id/sensor_view"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_below="@+id/textView"
+        android:layout_marginBottom="10dp"
         android:background="#E91E63" />
 
     <TextView
         android:id="@+id/Title_LED"
         style="@style/Custom_State_Tit_txtV"
-        android:layout_above="@+id/relative_LED"
-        android:text="LED 제어" />
+        android:text="LED 제어"
+        android:layout_below="@+id/sensor_view"
+        android:layout_alignParentStart="true" />
 
     <RelativeLayout
         android:id="@+id/relative_LED"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_above="@+id/Title_CONFIRM"
+        android:layout_below="@+id/Title_LED"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="5dp"
         android:gravity="center">
 
 
@@ -101,15 +111,16 @@
     <TextView
         android:id="@+id/Title_CONFIRM"
         style="@style/Custom_State_Tit_txtV"
-        android:layout_above="@+id/relative_lay2"
+        android:layout_below="@+id/relative_LED"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="5dp"
         android:text="온도 • 습도 확인" />
 
     <RelativeLayout
-        android:id="@+id/relative_lay2"
+        android:id="@+id/relative_Confirm"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:layout_above="@+id/Title_CONTROL"
+        android:layout_below="@+id/Title_CONFIRM"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp">
 
@@ -167,7 +178,7 @@
     <TextView
         android:id="@+id/Title_CONTROL"
         style="@style/Custom_State_Tit_txtV"
-        android:layout_above="@+id/relativeLayout"
+        android:layout_below="@+id/relative_Confirm"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="5dp"
         android:text="가스 • 화재 제어" />
@@ -175,6 +186,7 @@
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
+        android:layout_below="@+id/Title_CONTROL"
         android:layout_height="120dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true">

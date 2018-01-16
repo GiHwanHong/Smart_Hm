@@ -46,7 +46,7 @@
 
     <!-- 회원가입 창의 커스텀 텍스트 뷰 -->
     <style name="Custom_Join_txtV">
-        <item name="android:background">@drawable/join_txt_custom</item>
+        <item name="android:background">@drawable/custom_join_txt</item>
         <item name="android:textColor">#FFFFFF</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14dp</item>
@@ -87,7 +87,7 @@
     <style name="Custom_State_Tit_txtV">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">47dp</item>
-        <item name="android:background">@drawable/join_txt_custom</item>
+        <item name="android:background">@drawable/custom_join_txt</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">#FFF9C4</item>
         <item name="android:textSize">20dp</item>

@@ -8,6 +8,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Pattern;
 
 import static android.content.ContentValues.TAG;
 
@@ -39,7 +43,8 @@ public class MypageActivity extends Activity {
 
     private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
 
-    EditText Mypage_ID, Mypage_PN, Mypage_CODE;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
+    EditText Mypage_ID, Mypage_PN;
+    TextView Mypage_CODE;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
     EditText Mypage_PW1, Mypage_PW2, Mypage_NAME;
     TextView Mypage_ADDR_Show;
 
@@ -69,7 +74,7 @@ public class MypageActivity extends Activity {
         Mypage_NAME = (EditText) findViewById(R.id.Mypage_Name);
         Mypage_ADDR_Show = (TextView) findViewById(R.id.Mypage_Addr_Show);
         Mypage_PN = (EditText) findViewById(R.id.Mypage_Pn);
-        Mypage_CODE = (EditText) findViewById(R.id.Mypage_Code);
+        Mypage_CODE = (TextView) findViewById(R.id.Mypage_Code);
 
         try {
 
@@ -81,7 +86,11 @@ public class MypageActivity extends Activity {
 
             kakaoLink = KakaoLink.getKakaoLink(MypageActivity.this);
 
-            //만들어놓은 Select_Login를 선언 및 실행
+            Mypage_ID.setFilters(new InputFilter[] {filter_mypage});        // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
+            Mypage_PW1.setFilters(new InputFilter[] {filter_mypage});       // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
+            Mypage_PW2.setFilters(new InputFilter[] {filter_mypage});       // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
+
+            // 만들어놓은 Select_Login를 선언 및 실행
             // 인텐트를 통해 전달 받은 값을 execute해야 함
             new MypageActivity.Json_select().execute(usr_id_recv, usr_code_recv);
 
@@ -89,10 +98,23 @@ public class MypageActivity extends Activity {
             e.printStackTrace();
         }
 
-        //코드 자동 생성을 위하여 입력을 방지.
-        Mypage_CODE.setClickable(false);
-        Mypage_CODE.setFocusable(false);
+        // TextView Scrolling 가능하게 하기
+        Mypage_ADDR_Show.setMovementMethod(new ScrollingMovementMethod().getInstance());
+
     }
+
+    // 영어만 입력하기 위한 필터 처리 해주는 코드
+    protected InputFilter filter_mypage= new InputFilter() {
+
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[a-zA-Z0-9]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
+
 
     public void Mypage_Btn_click(View v) {
         switch (v.getId()) {

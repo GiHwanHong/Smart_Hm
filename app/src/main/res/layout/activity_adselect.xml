@@ -40,8 +40,7 @@
                 android:layout_height="20dp"
                 android:layout_alignParentStart="true"
                 android:layout_below="@+id/askaddress"
-                android:gravity="left|center"
-                android:text="Result" />
+                android:gravity="left|center" />
         </LinearLayout>
 
         <Button

@@ -76,12 +76,20 @@ public class SearchActivity extends Activity {
     public void webDatasend(View v) {
         switch (v.getId()) {
             case R.id.sendData:
-                Intent in_send = new Intent(SearchActivity.this, JoinActivity.class);
-                in_send.putExtra("address", res);
-                Log.e("주소 값을 보낼께 : ", res);
-                setResult(RESULT_OK,in_send);
-                finish();
-                break;
+                res=result.getText().toString();
+                if(res.length() == 0){
+                    com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                            .text("주소를 검색해주세요")
+                            .show(SearchActivity.this);
+                }else{
+                    Intent in_send = new Intent(SearchActivity.this, JoinActivity.class);
+                    in_send.putExtra("address", res);
+                    Log.e("주소 값을 보낼께 : ", res);
+                    setResult(RESULT_OK,in_send);
+                    finish();
+                    break;
+                }
+
         }
     }
 

@@ -45,7 +45,11 @@ dependencies {
     compile 'com.nispok:snackbar:2.11.+' //SnackBar
     compile 'com.github.ybq:Android-SpinKit:1.1.0' // 프로그래스바
 
+    // gson을 사용하기 위한 Library
     compile 'com.squareup.okhttp3:okhttp:3.6.0'
     compile 'com.google.code.gson:gson:2.8.0'
+
+    // SwipeRefreshLayout을 구현하기 위한 Library
+    //compile 'com.android.support:design:25.3.1'
 
 }

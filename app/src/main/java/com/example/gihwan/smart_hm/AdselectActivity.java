@@ -75,12 +75,21 @@ public class AdselectActivity extends Activity {
     public void webDatasend(View v) {
         switch (v.getId()) {
             case R.id.sendData:
-                Intent in_send = new Intent(AdselectActivity.this, MypageActivity.class);
-                in_send.putExtra("myaddr", res);
-                Log.e("주소 값을 보낼께 : ", res);
-                setResult(RESULT_OK,in_send);
-                finish();
-                break;
+                res = result.getText().toString();
+                if(res.length() == 0){
+                    com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                            .text("주소를 검색해주세요")
+                            .show(AdselectActivity.this);
+                }else{
+                    Intent in_send = new Intent(AdselectActivity.this, MypageActivity.class);
+                    in_send.putExtra("myaddr", res);
+                    Log.e("주소 값을 보낼께 : ", res);
+                    setResult(RESULT_OK,in_send);
+                    finish();
+                    break;
+                }
+
+
         }
     }
 

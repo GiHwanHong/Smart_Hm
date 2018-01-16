@@ -1,45 +1,15 @@
 package com.example.gihwan.smart_hm;
 
 import android.app.ActivityGroup;
-import android.app.DownloadManager;
-import android.app.ProgressDialog;
-import android.content.ContentValues;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.TabHost;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.kakao.kakaolink.KakaoLink;
-import com.kakao.kakaolink.KakaoTalkLinkMessageBuilder;
 import com.kakao.util.KakaoParameterException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by GiHwan on 2017. 12. 27..
@@ -71,7 +41,7 @@ public class LoginActivity extends ActivityGroup {
 
         tabhost1.addTab(tabhost1.newTabSpec("tab1tag")                      // newTabSpec - TabSpec 객체는 탭버튼의 형태와 탭의 내용을 관리하는 객체입니다.
                 .setIndicator(getString(R.string.tab1))                     // TabSpec 객체를 생성할때 사용할 tag 이름을 지정합니다.
-                .setContent(new Intent(this, StateActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
+                .setContent(new Intent(this, ControlActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
         tabhost1.addTab(tabhost1.newTabSpec("tab2tag")
                 .setIndicator(getString(R.string.tab2))
                 .setContent(new Intent(this, ChartActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));

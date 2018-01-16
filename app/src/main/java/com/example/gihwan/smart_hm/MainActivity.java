@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -27,6 +29,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Pattern;
 
 import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.support.v7.widget.StaggeredGridLayoutManager.TAG;
@@ -49,7 +52,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        boolean isGrantStorage = grantExternalStoragePermission();
+        boolean isGrantStorage = grantExternalStoragePermission();  //권한 확인
         main_show = (RelativeLayout) findViewById(R.id.main_show);
         show1 = (RelativeLayout)findViewById(R.id.show1);
         show2 = (RelativeLayout)findViewById(R.id.show2);
@@ -57,8 +60,24 @@ public class MainActivity extends Activity {
 
         usr_Id = (EditText)findViewById(R.id.house_holderid);       // 세대주의 아이디를 사용하기 위함.
         usr_Pw = (EditText)findViewById(R.id.house_holderpw);       // 세대주의 비밀번호를 사용하기 위함.
+
+        usr_Id.setFilters(new InputFilter[] {filter_main});
+        usr_Pw.setFilters(new InputFilter[] {filter_main});
+
         usr_Code = (EditText)findViewById(R.id.member_code);        // 구성원의 입력 코드를 사용하기 위함.
     }
+
+    // 영어만 입력하기 위한 필터 처리 해주는 코드
+    protected InputFilter filter_main= new InputFilter() {
+
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+            Pattern ps = Pattern.compile("^[a-zA-Z0-9]+$");
+            if (!ps.matcher(source).matches()) {
+                return "";
+            }
+            return null;
+        }
+    };
 
     @Override
     public void onBackPressed() { // 뒤로 가기 버튼 제어
