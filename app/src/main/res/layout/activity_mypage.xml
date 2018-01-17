@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:ems="10"
             android:hint="아이디를 입력해주세요"
-            android:inputType="textPassword"
+            android:inputType="textEmailAddress"
             android:maxLength="10"
             android:selectAllOnFocus="true"
             app:met_baseColor="@android:color/white"

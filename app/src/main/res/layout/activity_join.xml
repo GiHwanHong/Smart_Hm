@@ -39,7 +39,7 @@
             style="@style/Custom_Join_Edit"
             android:layout_width="wrap_content"
             android:hint="아이디를 입력해주세요"
-            android:inputType="textPassword"
+            android:inputType="textUri"
             android:maxLength="10"
             android:selectAllOnFocus="true"
             app:met_baseColor="@android:color/white"

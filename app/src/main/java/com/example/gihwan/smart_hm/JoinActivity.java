@@ -47,7 +47,7 @@ public class JoinActivity extends Activity {
     // 현재 날짜를 Format 받아와서 처리해주도록 한다.
     long now = System.currentTimeMillis();
     Date date = new Date(now);
-    SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy년MM월dd일 HH시mm분");
+    SimpleDateFormat Date_Format = new SimpleDateFormat("yyyy년 MM월 dd일 HH시mm분");
     String getTime = Date_Format.format(date);
 
     // 랜덤 값을 받기 위해 사용된 변수
