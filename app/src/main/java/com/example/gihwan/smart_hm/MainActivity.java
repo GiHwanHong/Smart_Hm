@@ -1,9 +1,7 @@
 package com.example.gihwan.smart_hm;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.ContentValues;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
@@ -12,16 +10,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
-import com.github.ybq.android.spinkit.style.DoubleBounce;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -29,7 +22,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.regex.Pattern;
 
 import static android.Manifest.permission.READ_PHONE_STATE;
 import static android.support.v7.widget.StaggeredGridLayoutManager.TAG;
@@ -156,16 +148,15 @@ public class MainActivity extends Activity {
             progressBar = new CustomProgressDialog(MainActivity.this);
             progressBar.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
             progressBar.show(); // 보여주기
+        }
 
+        @Override
+        protected String doInBackground(String... params) {
             try {
-                    Thread.sleep(1500);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
-        @Override
-        protected String doInBackground(String... params) {
-
             String usr_id = (String)params[0]; // 사용자의 ID를 가져옴
             String usr_pw = (String)params[1]; // 사용자의 PW를 가져옴
             String usr_code = (String) params[2]; // 사용자의 CODE를 가져옴

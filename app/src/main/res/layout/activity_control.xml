@@ -1,255 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipeRefreshLo"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/join_img">
+    android:layout_height="match_parent">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLo"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/Control_mainlayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="25dp"
-        android:gravity="center"
-        android:padding="5dp"
-        android:text="센서를 제어합니다"
-        android:textColor="#FFF9C4"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <View
-        android:id="@+id/sensor_view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/textView"
-        android:layout_marginBottom="10dp"
-        android:background="#E91E63" />
-
-    <TextView
-        android:id="@+id/Title_LED"
-        style="@style/Custom_State_Tit_txtV"
-        android:text="LED 제어"
-        android:layout_below="@+id/sensor_view"
-        android:layout_alignParentStart="true" />
-
-    <RelativeLayout
-        android:id="@+id/relative_LED"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_below="@+id/Title_LED"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:background="@drawable/join_img">
 
 
         <TextView
-            android:id="@+id/Sub_LED_1"
-            style="@style/Custom_State_txtV"
-            android:layout_width="wrap_content"
-
-            android:layout_above="@+id/switch_L_1"
-            android:layout_alignEnd="@+id/switch_L_1"
-            android:layout_marginEnd="21dp"
-            android:text="거실" />
-
-        <ToggleButton
-            android:id="@+id/switch_L_1"
-            android:layout_width="80dp"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/switch_L_2"
-            android:layout_alignBottom="@+id/switch_L_2"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="26dp"
-            android:onClick="State_ToggleBtn_click" />
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="25dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="센서를 제어합니다"
+            android:textColor="#FFF9C4"
+            android:textSize="25dp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/sensor_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/textView"
+            android:layout_marginBottom="10dp"
+            android:background="#E91E63" />
 
         <TextView
-            android:id="@+id/Sub_LED_2"
-            style="@style/Custom_State_txtV"
-            android:layout_width="wrap_content"
+            android:id="@+id/Title_LED"
+            style="@style/Custom_State_Tit_txtV"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/sensor_view"
+            android:text="LED 제어" />
 
-            android:layout_above="@+id/switch_L_2"
-            android:layout_centerHorizontal="true"
-            android:text="부엌" />
+        <RelativeLayout
+            android:id="@+id/relative_LED"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_below="@+id/Title_LED"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-        <ToggleButton
-            android:id="@+id/switch_L_2"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:onClick="State_ToggleBtn_click" />
+
+            <TextView
+                android:id="@+id/Sub_LED_1"
+                style="@style/Custom_State_txtV"
+                android:layout_width="wrap_content"
+
+                android:layout_above="@+id/switch_L_1"
+                android:layout_alignEnd="@+id/switch_L_1"
+                android:layout_marginEnd="21dp"
+                android:text="거실" />
+
+            <ToggleButton
+                android:id="@+id/switch_L_1"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/switch_L_2"
+                android:layout_alignBottom="@+id/switch_L_2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="26dp"
+                android:onClick="State_ToggleBtn_click" />
+
+            <TextView
+                android:id="@+id/Sub_LED_2"
+                style="@style/Custom_State_txtV"
+                android:layout_width="wrap_content"
+
+                android:layout_above="@+id/switch_L_2"
+                android:layout_centerHorizontal="true"
+                android:text="부엌" />
+
+            <ToggleButton
+                android:id="@+id/switch_L_2"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:onClick="State_ToggleBtn_click" />
+
+            <TextView
+                android:id="@+id/Sub_LED_3"
+                style="@style/Custom_State_txtV"
+                android:layout_width="70dp"
+
+                android:layout_above="@+id/switch_L_2"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="35dp"
+                android:text="방" />
+
+            <ToggleButton
+                android:id="@+id/switch_L_3"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/switch_L_2"
+                android:layout_alignEnd="@+id/Sub_LED_3"
+                android:onClick="State_ToggleBtn_click" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/Sub_LED_3"
-            style="@style/Custom_State_txtV"
-            android:layout_width="70dp"
+            android:id="@+id/Title_CONFIRM"
+            style="@style/Custom_State_Tit_txtV"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relative_LED"
+            android:layout_marginBottom="5dp"
+            android:text="온도 • 습도 확인" />
 
-            android:layout_above="@+id/switch_L_2"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="35dp"
-            android:text="방" />
+        <RelativeLayout
+            android:id="@+id/relative_Confirm"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/Title_CONFIRM"
+            android:layout_marginBottom="5dp">
 
-        <ToggleButton
-            android:id="@+id/switch_L_3"
-            android:layout_width="80dp"
-            android:layout_height="wrap_content"
-            android:layout_alignBaseline="@+id/switch_L_2"
-            android:layout_alignEnd="@+id/Sub_LED_3"
-            android:onClick="State_ToggleBtn_click" />
+            <TextView
+                android:id="@+id/Sub_TMP_Title1"
+                style="@style/Custom_State_txtV"
+                android:layout_width="wrap_content"
+                android:layout_above="@+id/Tmp_r1"
+                android:layout_alignStart="@+id/Tmp_r1"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginStart="31dp"
+                android:text="온도" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/Tmp_r1"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="19dp"
+                android:layout_marginStart="31dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="전체 온도입니다"
+                android:textColor="#000" />
 
-    <TextView
-        android:id="@+id/Title_CONFIRM"
-        style="@style/Custom_State_Tit_txtV"
-        android:layout_below="@+id/relative_LED"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp"
-        android:text="온도 • 습도 확인" />
+            <TextView
+                android:id="@+id/Sub_TMP_Title2"
+                style="@style/Custom_State_txtV"
+                android:layout_width="wrap_content"
+                android:layout_alignBaseline="@+id/Sub_TMP_Title1"
+                android:layout_alignBottom="@+id/Sub_TMP_Title1"
+                android:layout_alignStart="@+id/Tmp_r2"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginStart="47dp"
+                android:gravity="center"
+                android:text="습도" />
 
-    <RelativeLayout
-        android:id="@+id/relative_Confirm"
-        android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:layout_below="@+id/Title_CONFIRM"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp">
+            <TextView
+                android:id="@+id/Tmp_r2"
+                android:layout_width="140dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/Sub_TMP_Title2"
+                android:layout_marginEnd="42dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="전체 습도 온도입니다"
+                android:textColor="#000" />
+
+        </RelativeLayout>
 
         <TextView
-            android:id="@+id/Sub_TMP_Title1"
-            style="@style/Custom_State_txtV"
-            android:layout_width="wrap_content"
-            android:layout_above="@+id/Tmp_r1"
-            android:layout_alignStart="@+id/Tmp_r1"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginStart="31dp"
-            android:text="온도" />
+            android:id="@+id/Title_CONTROL"
+            style="@style/Custom_State_Tit_txtV"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/relative_Confirm"
+            android:layout_marginBottom="5dp"
+            android:text="가스 • 화재 제어" />
 
-        <TextView
-            android:id="@+id/Tmp_r1"
-            android:layout_width="110dp"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:id="@+id/relativeLayout"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="19dp"
-            android:layout_marginStart="31dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="전체 온도입니다"
-            android:textColor="#000" />
+            android:layout_below="@+id/Title_CONTROL">
 
-        <TextView
-            android:id="@+id/Sub_TMP_Title2"
-            style="@style/Custom_State_txtV"
-            android:layout_width="wrap_content"
-            android:layout_alignBaseline="@+id/Sub_TMP_Title1"
-            android:layout_alignBottom="@+id/Sub_TMP_Title1"
-            android:layout_alignStart="@+id/Tmp_r2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginStart="47dp"
-            android:gravity="center"
-            android:text="습도" />
+            <TextView
+                android:id="@+id/Sub_GAS_Title1"
+                style="@style/Custom_State_txtV"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/switch_G_1"
+                android:layout_alignStart="@+id/switch_G_1"
+                android:text="가스벨브" />
 
-        <TextView
-            android:id="@+id/Tmp_r2"
-            android:layout_width="140dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_below="@+id/Sub_TMP_Title2"
-            android:layout_marginEnd="42dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center"
-            android:text="전체 습도 온도입니다"
-            android:textColor="#000" />
+            <ToggleButton
+                android:id="@+id/switch_G_1"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="135dp"
+                android:layout_marginStart="32dp"
+                android:onClick="State_ToggleBtn_click" />
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/Sub_GAS_Title2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/Sub_GAS_Title3"
+                android:layout_alignTop="@+id/Sub_GAS_Title1"
+                android:text="가스 위험감지"
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/Title_CONTROL"
-        style="@style/Custom_State_Tit_txtV"
-        android:layout_below="@+id/relative_Confirm"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="5dp"
-        android:text="가스 • 화재 제어" />
+            <TextView
+                android:id="@+id/txt_gas_state"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/Sub_GAS_Title3"
+                android:layout_below="@+id/Sub_GAS_Title1"
+                android:layout_marginStart="23dp"
+                android:text="현재 가스는 안전합니다."
+                android:textColor="#388E3C" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_below="@+id/Title_CONTROL"
-        android:layout_height="120dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
+            <TextView
+                android:id="@+id/Sub_GAS_Title3"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/txt_fire_state"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="46dp"
+                android:layout_toEndOf="@+id/switch_G_1"
+                android:text="화재 위험감지"
+                android:textColor="#000000"
+                android:textSize="20dp" />
 
-        <TextView
-            android:id="@+id/Sub_GAS_Title1"
-            style="@style/Custom_State_txtV"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/switch_G_1"
-            android:layout_alignStart="@+id/switch_G_1"
-            android:text="가스벨브" />
+            <TextView
+                android:id="@+id/txt_fire_state"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/txt_gas_state"
+                android:layout_below="@+id/switch_G_1"
+                android:text="현재 화재는 안전합니다."
+                android:textColor="#388E3C" />
 
-        <ToggleButton
-            android:id="@+id/switch_G_1"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="135dp"
-            android:layout_marginStart="32dp"
-            android:onClick="State_ToggleBtn_click" />
-
-        <TextView
-            android:id="@+id/Sub_GAS_Title2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/Sub_GAS_Title3"
-            android:layout_alignTop="@+id/Sub_GAS_Title1"
-            android:text="가스 위험감지"
-            android:textColor="#000000"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/txt_gas_state"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/Sub_GAS_Title3"
-            android:layout_below="@+id/Sub_GAS_Title1"
-            android:layout_marginStart="23dp"
-            android:text="현재 가스는 안전합니다."
-            android:textColor="#388E3C" />
-
-        <TextView
-            android:id="@+id/Sub_GAS_Title3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/txt_fire_state"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="46dp"
-            android:layout_toEndOf="@+id/switch_G_1"
-            android:text="화재 위험감지"
-            android:textColor="#000000"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/txt_fire_state"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/txt_gas_state"
-            android:layout_below="@+id/switch_G_1"
-            android:text="현재 화재는 안전합니다."
-            android:textColor="#388E3C" />
+        </RelativeLayout>
 
     </RelativeLayout>
-</RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
