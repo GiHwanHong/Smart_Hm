@@ -22,7 +22,7 @@
             android:layout_marginTop="25dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="센서를 제어합니다"
+            android:text="Sensor Control"
             android:textColor="#FFF9C4"
             android:textSize="25dp"
             android:textStyle="bold" />
@@ -30,10 +30,10 @@
         <View
             android:id="@+id/sensor_view"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:layout_below="@+id/textView"
             android:layout_marginBottom="10dp"
-            android:background="#E91E63" />
+            android:background="#f1bc3e" />
 
         <TextView
             android:id="@+id/Title_LED"
@@ -133,8 +133,8 @@
                 android:layout_alignStart="@+id/Tmp_r1"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginStart="31dp"
-                android:text="온도" />
+                android:layout_marginStart="15dp"
+                android:text="현재온도" />
 
             <TextView
                 android:id="@+id/Tmp_r1"
@@ -158,9 +158,9 @@
                 android:layout_alignStart="@+id/Tmp_r2"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginStart="47dp"
+                android:layout_marginStart="15dp"
                 android:gravity="center"
-                android:text="습도" />
+                android:text="현재습도" />
 
             <TextView
                 android:id="@+id/Tmp_r2"

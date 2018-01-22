@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -37,21 +38,23 @@ public class ChartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
-        setupPieChart_LED();
-        setupLineChart_Val();
+        pieChart_LED = (PieChart)findViewById(R.id.piechart_LED);       // LED 사용량 계산
+        lineChart_Feel = (LineChart)findViewById(R.id.chart_feel);      // 온도 사용량 계산
 
         refreshLayout_Chart = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshChart);
         refreshLayout_Chart.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshLayout_Chart.setRefreshing(false);
+                pieChart_LED.setVisibility(View.INVISIBLE);
+                lineChart_Feel.setVisibility(View.INVISIBLE);
             }
         });
 
     }
 
     private void setupPieChart_LED(){
-        pieChart_LED = (PieChart)findViewById(R.id.piechart_LED);       // LED 사용량 계산
+
         pieChart_LED.setUsePercentValues(true);
         pieChart_LED.getDescription().setEnabled(false);
         pieChart_LED.setExtraOffsets(5,10,5,5);
@@ -89,7 +92,6 @@ public class ChartActivity extends Activity {
         pieChart_LED.invalidate();
     }
     private void setupLineChart_Val(){
-        lineChart_Feel = (LineChart)findViewById(R.id.chart_feel);      // 온도 사용량 계산
 
         List<Entry> list_Tmp = new ArrayList<Entry>();
         list_Tmp.add(new Entry(100,200));
@@ -115,5 +117,20 @@ public class ChartActivity extends Activity {
 
         lineChart_Feel.setData(data1); // set the data and list of lables into chart
         lineChart_Feel.invalidate();
+    }
+    public void Chart_Btn_Click(View v){
+        switch (v.getId()){
+            case R.id.LED_chart:
+
+                setupPieChart_LED();
+                pieChart_LED.setVisibility(View.VISIBLE);
+                lineChart_Feel.setVisibility(View.INVISIBLE);
+                break;
+            case R.id.grpah_show:
+                setupLineChart_Val();
+                lineChart_Feel.setVisibility(View.VISIBLE);
+                pieChart_LED.setVisibility(View.INVISIBLE);
+                break;
+        }
     }
 }

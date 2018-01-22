@@ -63,6 +63,7 @@ public class ControlActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 new Control_recv_LED().execute();
+
                 refreshLayout_Control.setRefreshing(false);
             }
         });
