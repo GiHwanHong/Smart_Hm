@@ -68,11 +68,14 @@ public class MainActivity extends Activity {
         }
         else{       // 뒤로가기 버튼 한번 클릭 시 초기 화면으로 돌리기 위함
             first_time = System.currentTimeMillis();
-
             main_show.setVisibility(View.VISIBLE);
             show1.setVisibility(View.GONE);
             show2.setVisibility(View.GONE);
             show3.setVisibility(View.GONE);
+
+            usr_Id.setText("");
+            usr_Pw.setText("");
+            usr_Code.setText("");
         }
     }
 

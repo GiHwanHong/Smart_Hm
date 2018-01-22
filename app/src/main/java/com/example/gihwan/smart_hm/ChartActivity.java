@@ -3,6 +3,7 @@ package com.example.gihwan.smart_hm;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.github.mikephil.charting.animation.Easing;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
@@ -29,6 +30,8 @@ public class ChartActivity extends Activity {
     PieChart pieChart_LED;
     LineChart lineChart_Feel;
 
+    private SwipeRefreshLayout refreshLayout_Chart;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,15 @@ public class ChartActivity extends Activity {
 
         setupPieChart_LED();
         setupLineChart_Val();
+
+        refreshLayout_Chart = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshChart);
+        refreshLayout_Chart.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshLayout_Chart.setRefreshing(false);
+            }
+        });
+
     }
 
     private void setupPieChart_LED(){
@@ -104,6 +116,4 @@ public class ChartActivity extends Activity {
         lineChart_Feel.setData(data1); // set the data and list of lables into chart
         lineChart_Feel.invalidate();
     }
-
-
 }

@@ -96,7 +96,7 @@
                 style="@style/Custom_Main_Edit"
                 android:hint="아이디"
                 android:lines="1"
-
+                android:inputType="textEmailAddress"
                 android:maxLength="10"
                 android:selectAllOnFocus="true"
                 android:singleLine="true" />
@@ -128,6 +128,7 @@
                 style="@style/Custom_Main_Edit"
                 android:hint="비밀번호"
                 android:lines="1"
+                android:inputType="textPassword"
                 android:maxLength="12"
                 android:singleLine="true" />
         </LinearLayout>
@@ -179,6 +180,7 @@
                 android:layout_marginLeft="10dp"
                 android:background="@null"
                 android:hint="코드입력"
+                android:textColor="#FFFF"
                 android:inputType="numberPassword"
                 android:maxLength="5"
                 android:paddingLeft="20dp"

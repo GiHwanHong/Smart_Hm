@@ -43,8 +43,8 @@ public class MypageActivity extends Activity {
 
     private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
 
-    EditText Mypage_ID, Mypage_PN;
-    TextView Mypage_CODE;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
+    EditText Mypage_PN;
+    TextView Mypage_ID,Mypage_CODE;          // 입력한 코드 번호를 공유하기 위해 선언해놓은 변수
     EditText Mypage_PW1, Mypage_PW2, Mypage_NAME;
     TextView Mypage_ADDR_Show;
 
@@ -68,7 +68,7 @@ public class MypageActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        Mypage_ID = (EditText) findViewById(R.id.Mypage_Id);
+        Mypage_ID = (TextView) findViewById(R.id.Mypage_Id);
         Mypage_PW1 = (EditText) findViewById(R.id.Mypage_Pw1);
         Mypage_PW2 = (EditText) findViewById(R.id.Mypage_Pw2);
         Mypage_NAME = (EditText) findViewById(R.id.Mypage_Name);
@@ -86,7 +86,6 @@ public class MypageActivity extends Activity {
 
             kakaoLink = KakaoLink.getKakaoLink(MypageActivity.this);
 
-            Mypage_ID.setFilters(new InputFilter[] {filter_mypage});        // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
             Mypage_PW1.setFilters(new InputFilter[] {filter_mypage});       // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
             Mypage_PW2.setFilters(new InputFilter[] {filter_mypage});       // 입력할 때 데이터 베이스에 효율적으로 접근하기 위해 영어만 입력하도록 함
 

@@ -60,9 +60,6 @@ public class JoinActivity extends Activity {
 
         Addrshow_view = (TextView) findViewById(R.id.Join_Addr_Show);
 
-        // TextView Scrolling 가능하게 하기
-        Addrshow_view.setMovementMethod(new ScrollingMovementMethod().getInstance());
-
         Join_ID = (EditText) findViewById(R.id.Join_Id);      // 아이디 입력 EditText
         Join_PW1 = (EditText) findViewById(R.id.Join_Pw1);    // 비밀번호1 입력 EditText
         Join_PW2 = (EditText) findViewById(R.id.Join_Pw2);    // 비밀번호2 입력 EditText
@@ -83,10 +80,13 @@ public class JoinActivity extends Activity {
         if (phoneNum.startsWith("+82")) {
             phoneNum = phoneNum.replace("+82", "0");
         }
+        // TextView Scrolling 가능하게 하기
+
         Join_PN.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
         Join_PN.setText(phoneNum);
 
         getRandomCode();
+        Addrshow_view.setMovementMethod(new ScrollingMovementMethod().getInstance());
     }
 
 

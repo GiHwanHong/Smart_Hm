@@ -196,6 +196,7 @@
             android:background="@drawable/custom_code_txt"
             android:gravity="center"
             android:hint="발급받은 코드 번호(5자리)"
+            android:maxLength="5"
             android:textColor="#FFFFFF"
             android:textSize="15dp" />
     </LinearLayout>

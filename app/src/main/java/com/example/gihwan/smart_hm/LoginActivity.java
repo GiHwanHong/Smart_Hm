@@ -2,11 +2,13 @@ package com.example.gihwan.smart_hm;
 
 import android.app.ActivityGroup;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.kakao.kakaolink.KakaoLink;
 import com.kakao.util.KakaoParameterException;
@@ -18,10 +20,6 @@ import com.kakao.util.KakaoParameterException;
 public class LoginActivity extends ActivityGroup {
 
     TabHost tabhost1;
-    private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
-    EditText Mypage_id;
-
-
     String usr_id_recv = "";
     String usr_code_recv = "";
 
@@ -39,47 +37,43 @@ public class LoginActivity extends ActivityGroup {
         tabhost1 = (TabHost) findViewById(R.id.tabhost1);
         tabhost1.setup(getLocalActivityManager());
 
-        tabhost1.addTab(tabhost1.newTabSpec("tab1tag")                      // newTabSpec - TabSpec 객체는 탭버튼의 형태와 탭의 내용을 관리하는 객체입니다.
+        tabhost1.addTab(tabhost1.newTabSpec("SensorControl")                      // newTabSpec - TabSpec 객체는 탭버튼의 형태와 탭의 내용을 관리하는 객체입니다.
                 .setIndicator(getString(R.string.tab1))                     // TabSpec 객체를 생성할때 사용할 tag 이름을 지정합니다.
                 .setContent(new Intent(this, ControlActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
-        tabhost1.addTab(tabhost1.newTabSpec("tab2tag")
+        tabhost1.addTab(tabhost1.newTabSpec("Chart")
                 .setIndicator(getString(R.string.tab2))
                 .setContent(new Intent(this, ChartActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
-        tabhost1.addTab(tabhost1.newTabSpec("tab3tag")
+        tabhost1.addTab(tabhost1.newTabSpec("Mypage")
                 .setIndicator(getString(R.string.tab3))
                 .setContent(new Intent(this,MypageActivity.class).putExtra("usr_id_recv",usr_id_recv).putExtra("usr_code_recv",usr_code_recv).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
-
         createTab();
-
-
-
-        try {
-            kakaoLink = KakaoLink.getKakaoLink(LoginActivity.this);
-        } catch (KakaoParameterException e) {
-            e.printStackTrace();
-        }
-
     }
 
     public void createTab() {
-
+        // 선택되지 않은 것을 처리한다
+        /*for(int i = 0 ; i < tabhost1.getTabWidget().getChildCount(); i++){
+            TextView choose_tv = (TextView)tabhost1.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
+            choose_tv.setTextColor(Color.parseColor("#dddddd"));
+            tabhost1.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#808080"));
+        }
+        tabhost1.getTabWidget().getChildAt(tabhost1.getCurrentTab()).setBackgroundColor(Color.parseColor("#4CAF50"));*/
         tabhost1.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
-
-
             @Override
             public void onTabChanged(String tabId) {
+
                 switch (tabId) {
-                    case "tab1tag":
+                    case "SensorControl":
+
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
                                 .text("이 곳에서는 센서를 제어할 수 있습니다")
                                 .show(LoginActivity.this);
                         break;
-                    case "tab2tag":
+                    case "Chart":
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
                                 .text("이 곳에서는 전기 사용량을 확인 할 수 있습니다")
                                 .show(LoginActivity.this);
                         break;
-                    case "tab3tag":
+                    case "Mypage":
                         com.nispok.snackbar.Snackbar.with(getApplicationContext())
                                 .text("회원의 정보를 수정 및 발급받은 코드를 전송할 수 있습니다.")
                                 .show(LoginActivity.this);
@@ -90,28 +84,3 @@ public class LoginActivity extends ActivityGroup {
         });
     }
 }
-
-
-    /*@Override                     // 툴바 사용시 사용할 것
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_kakao:
-                final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
-                        = kakaoLink.createKakaoTalkLinkMessageBuilder();
-                try {
-                    kakaoTalkLinkMessageBuilder.addText("전송된 코드는 \n => ");
-                    kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);   // 메시지 전송
-                } catch (KakaoParameterException e) {
-                    e.printStackTrace();
-                }
-                finish();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }*/

@@ -26,7 +26,6 @@ import java.net.URL;
 /**
  * Created by GiHwan on 2017. 12. 27..
  */
-
 public class ControlActivity extends AppCompatActivity {
 
     TextView TMP , Humidity;
@@ -42,7 +41,7 @@ public class ControlActivity extends AppCompatActivity {
     String TMP_val ="";
     String Hum_val ="";
 
-    private SwipeRefreshLayout refreshLayout;
+    private SwipeRefreshLayout refreshLayout_Control;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,15 +58,14 @@ public class ControlActivity extends AppCompatActivity {
         tb_room = (ToggleButton) findViewById(R.id.switch_L_3);         //         - 방
         tb_gasvalve = (ToggleButton) findViewById(R.id.switch_G_1);     //         - 가스벨브
 
-        refreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLo);
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        refreshLayout_Control = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLo);
+        refreshLayout_Control.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {                 // 호출 시점 Refresh
             @Override
             public void onRefresh() {
                 new Control_recv_LED().execute();
-                refreshLayout.setRefreshing(false);
+                refreshLayout_Control.setRefreshing(false);
             }
         });
-
         new Control_recv_LED().execute();
     }
 
@@ -138,7 +136,7 @@ public class ControlActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res) {
             super.onPostExecute(res);
-            Log.e("모든 정보를 얻어 온다_LED_State", res);
+            Log.e("모든 LED, 온도, 습도 정보를 얻어 온다!", res);
             progressDialog.dismiss();
           //  new Control_recv_Hum().execute();
         }
@@ -250,7 +248,6 @@ public class ControlActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-
     // getStringFromUrl : 주어진 URL의 문서의 내용을 문자열로 반환
     public String getStringFromUrl(String pUrl) {
 
@@ -303,7 +300,7 @@ public class ControlActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res) {
             super.onPostExecute(res);
-            Log.e("모든 정보를 얻어 온다_LED_Send", res);
+            Log.e("내가 버튼 제어할 정보를 보여준다", res);
             progressDialog.dismiss();
         }
 
