@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.EditText;
 import android.widget.TabHost;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kakao.kakaolink.KakaoLink;
 import com.kakao.util.KakaoParameterException;
@@ -22,6 +23,10 @@ public class LoginActivity extends ActivityGroup {
     TabHost tabhost1;
     String usr_id_recv = "";
     String usr_code_recv = "";
+
+    // 뒤로 가기 버튼 제어사용 변수
+    long first_time;
+    long second_time;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,12 +56,6 @@ public class LoginActivity extends ActivityGroup {
 
     public void createTab() {
         // 선택되지 않은 것을 처리한다
-        /*for(int i = 0 ; i < tabhost1.getTabWidget().getChildCount(); i++){
-            TextView choose_tv = (TextView)tabhost1.getTabWidget().getChildAt(i).findViewById(android.R.id.title);
-            choose_tv.setTextColor(Color.parseColor("#dddddd"));
-            tabhost1.getTabWidget().getChildAt(i).setBackgroundColor(Color.parseColor("#808080"));
-        }
-        tabhost1.getTabWidget().getChildAt(tabhost1.getCurrentTab()).setBackgroundColor(Color.parseColor("#4CAF50"));*/
         tabhost1.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
             @Override
             public void onTabChanged(String tabId) {
@@ -82,5 +81,16 @@ public class LoginActivity extends ActivityGroup {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        second_time = System.currentTimeMillis();
+        Toast.makeText(LoginActivity.this, "앱을 종료하시려면 한번 더 누르세요 ", Toast.LENGTH_SHORT).show();
+        if(second_time - first_time < 2000){
+            super.onBackPressed();
+            finishAffinity();
+        }
+
     }
 }

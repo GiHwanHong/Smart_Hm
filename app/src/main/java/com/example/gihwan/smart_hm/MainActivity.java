@@ -56,10 +56,8 @@ public class MainActivity extends Activity {
         usr_Code = (EditText)findViewById(R.id.member_code);        // 구성원의 입력 코드를 사용하기 위함.
     }
 
-
     @Override
     public void onBackPressed() { // 뒤로 가기 버튼 제어
-
         second_time = System.currentTimeMillis();
         Toast.makeText(MainActivity.this, "앱을 종료하시려면 한번 더 누르세요 ", Toast.LENGTH_SHORT).show();
         if(second_time - first_time < 2000){
@@ -80,7 +78,6 @@ public class MainActivity extends Activity {
     }
 
     public void Main_Btn_click(View v){
-
         switch (v.getId()){
             case R.id.main_login:                   // 메인 화면의 로그인 버튼 클릭 시 처리
                 show1.setVisibility(View.VISIBLE);
@@ -141,7 +138,6 @@ public class MainActivity extends Activity {
     }
 
     public class ChkData_Main extends AsyncTask<String, Void, String>{                //////// 로그인 처리
-
         private CustomProgressDialog progressBar;
         private AlertDialog.Builder alertBuilder;
 
@@ -168,7 +164,6 @@ public class MainActivity extends Activity {
             String postParameters = "usr_id="+usr_id + "&usr_pw="+usr_pw+"&usr_code="+usr_code;
 
             try {
-
                 URL url = new URL(server_URL);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
 
