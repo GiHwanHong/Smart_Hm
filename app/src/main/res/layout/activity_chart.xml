@@ -32,42 +32,43 @@
 
         <Button
             android:id="@+id/LED_chart"
-            android:text="LED 사용량 확인하기"
-            android:onClick="Chart_Btn_Click"
-            android:background="@drawable/ripple_efc_chart_background"
-            android:textColor="#FFFFFF"
             android:layout_width="match_parent"
-            android:layout_margin="10dp"
-            android:textSize="15dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/view1"/>
+            android:layout_below="@+id/view1"
+            android:layout_margin="10dp"
+            android:background="@drawable/ripple_efc_chart_background"
+            android:onClick="Chart_Btn_Click"
+            android:text="LED 사용량 확인하기"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/piechart_LED"
-            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_marginTop="224dp"
-            android:layout_below="@+id/view1" />
+            android:layout_below="@+id/view1"
+            android:layout_marginTop="200dp"
+            android:visibility="gone"/>
+
         <Button
             android:id="@+id/grpah_show"
-            android:text="온도 • 습도 확인하기"
-            android:layout_margin="10dp"
-            android:onClick="Chart_Btn_Click"
-            android:background="@drawable/ripple_efc_chart_background"
-            android:textSize="15dp"
-            android:textColor="#FFFFFF"
-            android:layout_below="@+id/LED_chart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LED_chart"
+            android:layout_margin="10dp"
+            android:background="@drawable/ripple_efc_chart_background"
+            android:onClick="Chart_Btn_Click"
+            android:text="온도 • 습도 확인하기"
+            android:textColor="#FFFFFF"
+            android:textSize="15dp" />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/chart_feel"
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_below="@+id/grpah_show"
+            android:layout_marginTop="70dp"
             android:visibility="gone"
-            android:layout_marginTop="128dp"
-
-            android:layout_below="@+id/grpah_show" />
+             />
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

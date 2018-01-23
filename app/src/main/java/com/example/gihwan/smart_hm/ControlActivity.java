@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -235,7 +236,9 @@ public class ControlActivity extends AppCompatActivity {
                         @Override
                         public void run() {
                             TMP.setText(TMP_val+" 도");
+                            TMP.setGravity(Gravity.CENTER);
                             Humidity.setText(Hum_val+" 도");
+                            Humidity.setGravity(Gravity.CENTER);
                         }});
                     sb.append("[ " + TMP_val + " ]\n");
                     sb.append("[" + Hum_val + "]\n");

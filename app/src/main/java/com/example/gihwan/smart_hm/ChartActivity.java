@@ -67,14 +67,14 @@ public class ChartActivity extends Activity {
 
         ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
 
-        yValues.add(new PieEntry(34f,"LED1"));
-        yValues.add(new PieEntry(23f,"LED2"));
-        yValues.add(new PieEntry(14f,"LED3"));
-        yValues.add(new PieEntry(35f,"LED4"));
+        yValues.add(new PieEntry(34f,"거실"));
+        yValues.add(new PieEntry(23f,"부엌"));
+        yValues.add(new PieEntry(14f,"방"));
+        yValues.add(new PieEntry(35f,"가스벨브"));
 
         Description description = new Description();
-        description.setText("LED 전기 사용량 "); //라벨
-        description.setTextSize(18);
+        description.setText("조명 전기 사용량 "); //라벨
+        description.setTextSize(15);
         description.setTextColor(Color.BLACK);
         pieChart_LED.setDescription(description);
 
@@ -103,8 +103,8 @@ public class ChartActivity extends Activity {
         list_Hmi.add(new Entry(100,200));
         list_Hmi.add(new Entry(80,180));
 
-        LineDataSet TMP = new LineDataSet(list_Tmp, "Temperature");
-        LineDataSet Humidity = new LineDataSet(list_Hmi, "Humidity");
+        LineDataSet TMP = new LineDataSet(list_Tmp, "온도");
+        LineDataSet Humidity = new LineDataSet(list_Hmi, "습도");
         TMP.setDrawFilled(true);
         Humidity.setCircleColor(Color.DKGRAY);
 

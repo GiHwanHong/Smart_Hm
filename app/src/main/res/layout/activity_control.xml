@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/swipeRefreshLo"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -147,7 +146,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="전체 온도입니다"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:textSize="16dp" />
 
             <TextView
                 android:id="@+id/Sub_TMP_Title2"
@@ -158,13 +158,13 @@
                 android:layout_alignStart="@+id/Tmp_r2"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="20dp"
                 android:gravity="center"
                 android:text="현재습도" />
 
             <TextView
                 android:id="@+id/Tmp_r2"
-                android:layout_width="140dp"
+                android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_below="@+id/Sub_TMP_Title2"
@@ -172,7 +172,8 @@
                 android:layout_marginTop="10dp"
                 android:gravity="center"
                 android:text="전체 습도 온도입니다"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:textSize="16dp" />
 
         </RelativeLayout>
 

@@ -121,7 +121,10 @@ public class MypageActivity extends Activity {
                 final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
                         = kakaoLink.createKakaoTalkLinkMessageBuilder();
                 try {
-                    kakaoTalkLinkMessageBuilder.addText("전송된 코드는 \n => " + Mypage_CODE.getText().toString());
+
+                    kakaoTalkLinkMessageBuilder.addText("안녕하세요~ \n\""+Mypage_NAME.getText().toString()+"\" 님의 가족분이 사용할 코드는 \n => "
+                                                        + Mypage_CODE.getText().toString()+" 입니다.\n 확인 후 로그인 해주세요");
+
                     kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);   // 메시지 전송
                 } catch (KakaoParameterException e) {
                     e.printStackTrace();
