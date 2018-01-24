@@ -40,7 +40,6 @@ import static android.content.ContentValues.TAG;
 
 public class MypageActivity extends Activity {
 
-
     private KakaoLink kakaoLink; // 카카오톡 메신저를 사용하기 위해 선언해놓은 변수
 
     EditText Mypage_PN;
@@ -121,10 +120,8 @@ public class MypageActivity extends Activity {
                 final KakaoTalkLinkMessageBuilder kakaoTalkLinkMessageBuilder
                         = kakaoLink.createKakaoTalkLinkMessageBuilder();
                 try {
-
                     kakaoTalkLinkMessageBuilder.addText("안녕하세요~ \n\""+Mypage_NAME.getText().toString()+"\" 님의 가족분이 사용할 코드는 \n => "
                                                         + Mypage_CODE.getText().toString()+" 입니다.\n 확인 후 로그인 해주세요");
-
                     kakaoLink.sendMessage(kakaoTalkLinkMessageBuilder, this);   // 메시지 전송
                 } catch (KakaoParameterException e) {
                     e.printStackTrace();
@@ -138,6 +135,11 @@ public class MypageActivity extends Activity {
 
             case R.id.Mypage_Delete:     // 회원 탈퇴 버튼 클릭 시
                 new Json_Delete().execute(usr_code_json);
+                com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                        .text("탈퇴 처리가 되었습니다")
+                        .show(MypageActivity.this);
+                startActivity(new Intent(this, MainActivity.class));
+                finish();
                 break;
 
             case R.id.Mypage_Update:    // 회원 정보 변경 버튼 클릭시

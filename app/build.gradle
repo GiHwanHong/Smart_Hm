@@ -28,8 +28,10 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 
-    // 원 그래프 만드는 라이브러리 MpAndroidChart
-    compile 'com.github.PhilJay:MpAndroidChart:v3.0.2'
+    // 그래프 만드는 라이브러리 MpAndroidChart
+    //compile 'com.github.PhilJay:MpAndroidChart:v3.0.2'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.4'
+    compile 'com.github.lecho:hellocharts-android:v1.5.8'
 
     //kakao_talk
     compile group: project.KAKAO_SDK_GROUP, name: 'kakaolink', version: project.KAKAO_SDK_VERSION

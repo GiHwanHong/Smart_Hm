@@ -7,21 +7,21 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.View;
 
 import com.github.mikephil.charting.animation.Easing;
-import com.github.mikephil.charting.charts.HorizontalBarChart;
-import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
-import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
-import com.github.mikephil.charting.data.PieEntry;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by GiHwan on 2017. 12. 27..
@@ -29,7 +29,7 @@ import java.util.List;
 
 public class ChartActivity extends Activity {
     PieChart pieChart_LED;
-    LineChart lineChart_Feel;
+    BarChart BarData_Feel;
 
     private SwipeRefreshLayout refreshLayout_Chart;
 
@@ -38,26 +38,25 @@ public class ChartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart);
 
-        pieChart_LED = (PieChart)findViewById(R.id.piechart_LED);       // LED 사용량 계산
-        lineChart_Feel = (LineChart)findViewById(R.id.chart_feel);      // 온도 사용량 계산
+        pieChart_LED = (PieChart) findViewById(R.id.piechart_LED);       // LED 사용량 계산
+        BarData_Feel = (BarChart) findViewById(R.id.barchart_feel);      // 온도 사용량 계산
 
-        refreshLayout_Chart = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshChart);
+        refreshLayout_Chart = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshChart);
         refreshLayout_Chart.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 refreshLayout_Chart.setRefreshing(false);
                 pieChart_LED.setVisibility(View.INVISIBLE);
-                lineChart_Feel.setVisibility(View.INVISIBLE);
+                BarData_Feel.setVisibility(View.INVISIBLE);
             }
         });
 
     }
 
-    private void setupPieChart_LED(){
+    private void setupPieChart_LED() {
 
         pieChart_LED.setUsePercentValues(true);
-        pieChart_LED.getDescription().setEnabled(false);
-        pieChart_LED.setExtraOffsets(5,10,5,5);
+        pieChart_LED.setExtraOffsets(5, 10, 5, 5);
 
         pieChart_LED.setDragDecelerationFrictionCoef(0.95f);
 
@@ -65,72 +64,129 @@ public class ChartActivity extends Activity {
         pieChart_LED.setHoleColor(Color.WHITE);
         pieChart_LED.setTransparentCircleRadius(61f);
 
-        ArrayList<PieEntry> yValues = new ArrayList<PieEntry>();
+        ArrayList<Entry> yValues = new ArrayList<Entry>();
 
-        yValues.add(new PieEntry(34f,"거실"));
-        yValues.add(new PieEntry(23f,"부엌"));
-        yValues.add(new PieEntry(14f,"방"));
-        yValues.add(new PieEntry(35f,"가스벨브"));
+        yValues.add(new Entry(34f, 0));
+        yValues.add(new Entry(23f, 1));
+        yValues.add(new Entry(14f, 2));
+        yValues.add(new Entry(35f, 3));
 
-        Description description = new Description();
-        description.setText("조명 전기 사용량 "); //라벨
-        description.setTextSize(15);
-        description.setTextColor(Color.BLACK);
-        pieChart_LED.setDescription(description);
-
-        pieChart_LED.animateY(1000, Easing.EasingOption.EaseInOutExpo); //애니메이션
-
-        PieDataSet dataSet_LED = new PieDataSet(yValues,"LED Total");
+        PieDataSet dataSet_LED = new PieDataSet(yValues, "");
+        dataSet_LED.setValueTextSize(15);
         dataSet_LED.setSliceSpace(3f);
         dataSet_LED.setSelectionShift(5f);
         dataSet_LED.setColors(ColorTemplate.COLORFUL_COLORS);
 
-        PieData data = new PieData((dataSet_LED));
-        data.setValueTextSize(10f);
-        data.setValueTextColor(Color.YELLOW);
+        final ArrayList<String> xVals = new ArrayList<String>();
+        xVals.add("거실");
+        xVals.add("부엌");
+        xVals.add("방");
+        xVals.add("가스벨브");
+
+        pieChart_LED.animateY(1000, Easing.EasingOption.EaseInOutExpo); //애니메이션
+
+        PieData data = new PieData(xVals, dataSet_LED);
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextColor(Color.WHITE);
+        pieChart_LED.setData(data);
+        pieChart_LED.setDescription("조명 전기 사용량");
+        pieChart_LED.setDescriptionTextSize(20f);
+
+        pieChart_LED.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+                switch (dataSetIndex) {
+                    case 0:
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text("총 거실의 전기 사용량은 : " + e.getVal() + " 입니다.")
+                                .show(ChartActivity.this);
+                        break;
+                    case 1:
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text("총 부엌의 전기 사용량은 : " + e.getVal() + " 입니다.")
+                                .show(ChartActivity.this);
+                        break;
+                    case 2:
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text("총 방의 전기 사용량은 : " + e.getVal() + " 입니다.")
+                                .show(ChartActivity.this);
+                        break;
+                    case 3:
+                        com.nispok.snackbar.Snackbar.with(getApplicationContext())
+                                .text("총 가스벨브의 사용량은 : " + e.getVal() + " 입니다.")
+                                .show(ChartActivity.this);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
         pieChart_LED.setData(data);
         pieChart_LED.invalidate();
     }
-    private void setupLineChart_Val(){
 
-        List<Entry> list_Tmp = new ArrayList<Entry>();
-        list_Tmp.add(new Entry(100,200));
-        list_Tmp.add(new Entry(120,250));
-        list_Tmp.add(new Entry(130,210));
+    private void setupBarChart_Val() {
 
-        List<Entry> list_Hmi = new ArrayList<Entry>();
-        list_Hmi.add(new Entry(120,120));
-        list_Hmi.add(new Entry(100,200));
-        list_Hmi.add(new Entry(80,180));
+        ArrayList<String> month = new ArrayList<String>();
+        month.add("1월");
+        month.add("2월");
+        month.add("3월");
+        month.add("4월");
+        month.add("5월");
+        //month.add("6월");
 
-        LineDataSet TMP = new LineDataSet(list_Tmp, "온도");
-        LineDataSet Humidity = new LineDataSet(list_Hmi, "습도");
-        TMP.setDrawFilled(true);
-        Humidity.setCircleColor(Color.DKGRAY);
+        ArrayList<BarEntry> bar_Tmp = new ArrayList<>();
+        bar_Tmp.add(new BarEntry(8, 0));
+        bar_Tmp.add(new BarEntry(2, 1));
+        bar_Tmp.add(new BarEntry(15, 2));
+        bar_Tmp.add(new BarEntry(20, 3));
+        //bar_Tmp.add(new BarEntry(5, 4));
 
-        List<ILineDataSet> dataSets = new ArrayList<ILineDataSet>();
+        ArrayList<BarEntry> bar_Hmi = new ArrayList<>();
+        bar_Hmi.add(new BarEntry(16, 0));
+        bar_Hmi.add(new BarEntry(14, 1));
+        bar_Hmi.add(new BarEntry(5, 2));
+        bar_Hmi.add(new BarEntry(20, 3));
+        //bar_Tmp.add(new BarEntry(5, 4));
 
-        dataSets.add(TMP);
-        dataSets.add(Humidity);
+        BarDataSet TMP_set = new BarDataSet(bar_Tmp, "온도");
+        TMP_set.setColor(Color.rgb(244, 67, 54));
+        TMP_set.setDrawValues(true);
 
-        LineData data1 = new LineData(dataSets);
+        BarDataSet Humidity_set = new BarDataSet(bar_Hmi, "습도");
+        Humidity_set.setColor(Color.rgb(255, 235, 59));
+        Humidity_set.setDrawValues(true);
 
-        lineChart_Feel.setData(data1); // set the data and list of lables into chart
-        lineChart_Feel.invalidate();
+        ArrayList<IBarDataSet> dataSets_bar = new ArrayList<>();
+        dataSets_bar.add(TMP_set);
+        dataSets_bar.add(Humidity_set);
+        BarData feel_data = new BarData(month, dataSets_bar);
+
+        BarData_Feel.setData(feel_data); // initialize the Bardata with argument labels and dataSet
+        BarData_Feel.animateY(2000);
+        BarData_Feel.setDescription(null);
+        // BarData_Feel.getLegend().setEnabled(false);
+        BarData_Feel.invalidate();
+
     }
-    public void Chart_Btn_Click(View v){
-        switch (v.getId()){
+
+    public void Chart_Btn_Click(View v) {
+        switch (v.getId()) {
             case R.id.LED_chart:
 
                 setupPieChart_LED();
                 pieChart_LED.setVisibility(View.VISIBLE);
-                lineChart_Feel.setVisibility(View.INVISIBLE);
+                BarData_Feel.setVisibility(View.INVISIBLE);
                 break;
             case R.id.grpah_show:
-                setupLineChart_Val();
-                lineChart_Feel.setVisibility(View.VISIBLE);
+                setupBarChart_Val();
+                BarData_Feel.setVisibility(View.VISIBLE);
                 pieChart_LED.setVisibility(View.INVISIBLE);
                 break;
         }
     }
+
 }
