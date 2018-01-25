@@ -32,14 +32,9 @@
 
         <Button
             android:id="@+id/LED_chart"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Custom_Chart_Btn"
             android:layout_below="@+id/view1"
-            android:layout_margin="10dp"
-            android:background="@drawable/ripple_efc_chart_background"
-            android:onClick="Chart_Btn_Click"
             android:text="LED 사용량 확인하기"
-            android:textColor="#FFFFFF"
             android:textSize="15dp" />
 
         <com.github.mikephil.charting.charts.PieChart
@@ -48,18 +43,13 @@
             android:layout_height="250dp"
             android:layout_below="@+id/view1"
             android:layout_marginTop="200dp"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/grpah_show"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/Custom_Chart_Btn"
             android:layout_below="@+id/LED_chart"
-            android:layout_margin="10dp"
-            android:background="@drawable/ripple_efc_chart_background"
-            android:onClick="Chart_Btn_Click"
             android:text="온도 • 습도 확인하기"
-            android:textColor="#FFFFFF"
             android:textSize="15dp" />
 
         <com.github.mikephil.charting.charts.BarChart
@@ -68,7 +58,6 @@
             android:layout_height="300dp"
             android:layout_below="@+id/LED_chart"
             android:layout_marginTop="90dp"
-            android:visibility="gone"
-             />
+            android:visibility="gone" />
     </RelativeLayout>
 </android.support.v4.widget.SwipeRefreshLayout>

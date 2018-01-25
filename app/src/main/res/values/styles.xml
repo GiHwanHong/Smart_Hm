@@ -16,7 +16,7 @@
         <item name="android:background">@drawable/splash_img</item>
     </style>
 
-    <!-- Main창의 커스텀 버튼 -->
+    <!-- Main(Login)창의 커스텀 버튼 -->
     <style name="Custom_Main_Btn">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18dp</item>
@@ -25,7 +25,7 @@
         <item name="android:layout_width">200dp</item>
         <item name="android:layout_height">58dp</item>
     </style>
-    <!-- Main창의 커스텀 뷰 -->
+    <!-- Main(Login)창의 커스텀 뷰 -->
     <style name="Custom_Main_View">
 
         <item name="android:layout_marginStart">40dp</item>
@@ -34,7 +34,7 @@
         <item name="android:background">#FFFFFF</item>
 
     </style>
-    <!-- Main창의 커스텀 입력 창 -->
+    <!-- Main(Login)창의 커스텀 입력 창 -->
     <style name="Custom_Main_Edit">
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:paddingLeft">10dp</item>
@@ -44,7 +44,7 @@
         <item name="android:textColor">#FFFFFF</item>
     </style>
 
-    <!-- 회원가입 창의 커스텀 텍스트 뷰 -->
+    <!-- 회원가입 창(activity_join)의 커스텀 텍스트 뷰 -->
     <style name="Custom_Join_txtV">
         <item name="android:background">@drawable/custom_join_txt</item>
         <item name="android:textColor">#FFFFFF</item>
@@ -53,14 +53,14 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <!-- 회원가입 창의 커스텀 버튼 -->
+    <!-- 회원가입 창(activity_join)의 커스텀 버튼 -->
     <style name="Custom_Join_Btn">
         <item name="android:background">@drawable/ripple_efc_join_btn</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#C8E6C9</item>
     </style>
 
-    <!-- 회원가입 창의 커스텀 입력 창 -->
+    <!-- 회원가입 창(activity_join)의 커스텀 입력 창 -->
     <style name="Custom_Join_Edit">
         <item name="android:gravity">center</item>
         <item name="android:imeOptions">actionNext</item>
@@ -68,23 +68,23 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- 마이페이지 창의 커스텀 버튼 -->
+    <!-- 마이페이지 창(activity_mypage)의 커스텀 버튼 -->
     <style name="Custom_Mypage_Btn">
         <item name="android:background">@drawable/ripple_efc_join_btn</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">#C8E6C9</item>
     </style>
 
-    <!-- 상태 창의 커스텀 텍스트 뷰 -->
-    <style name="Custom_State_txtV">
+    <!-- 센서제어 창(activity_control)의 커스텀 텍스트 뷰 -->
+    <style name="Custom_Control_txtV">
         <item name="android:textColor">#FFF9C4</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">20dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <!-- 상태 창의 커스텀 타이틀 텍스트 뷰 -->
-    <style name="Custom_State_Tit_txtV">
+    <!-- 센서제어 창(activity_control)의 커스텀 타이틀 텍스트 뷰 -->
+    <style name="Custom_Control_Tit_txtV">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">47dp</item>
         <item name="android:background">@drawable/custom_join_txt</item>
@@ -92,5 +92,14 @@
         <item name="android:textColor">#FFF9C4</item>
         <item name="android:textSize">20dp</item>
         <item name="android:layout_alignParentStart">true</item>
+    </style>
+    <!-- 차트 창(activity_chart)의 커스텀 타이틀 텍스트 뷰 -->
+    <style name="Custom_Chart_Btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">10dp</item>
+        <item name="android:background">@drawable/ripple_efc_chart_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:onClick">Chart_Btn_Click</item>
     </style>
 </resources>
