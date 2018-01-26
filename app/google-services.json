@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "738521531667",
+    "firebase_url": "https://interworkerhm-c35fc.firebaseio.com",
+    "project_id": "interworkerhm-c35fc",
+    "storage_bucket": "interworkerhm-c35fc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738521531667:android:8b12dafc2bbeb66d",
+        "android_client_info": {
+          "package_name": "com.example.gihwan.smart_hm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738521531667-qqc9s3u066vh83gnobofvp2olo25qsep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxv4ZuFuQvh8-lreTmTVvKPH2G72Iwhp4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

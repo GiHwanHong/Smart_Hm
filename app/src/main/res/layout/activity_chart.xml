@@ -34,6 +34,7 @@
             android:id="@+id/LED_chart"
             style="@style/Custom_Chart_Btn"
             android:layout_below="@+id/view1"
+            android:onClick="Chart_Btn_Click"
             android:text="LED 사용량 확인하기"
             android:textSize="15dp" />
 
@@ -49,6 +50,7 @@
             android:id="@+id/grpah_show"
             style="@style/Custom_Chart_Btn"
             android:layout_below="@+id/LED_chart"
+            android:onClick="Chart_Btn_Click"
             android:text="온도 • 습도 확인하기"
             android:textSize="15dp" />
 

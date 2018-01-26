@@ -193,7 +193,7 @@ public class MypageActivity extends Activity {
 
             String usr_code = (String) params[0];
 
-            String server_URL = "http://13.124.195.151/hdelete.php";
+            String server_URL = "http://52.78.22.237/hdelete.php";
 
             String postParameters = "usr_code=" + usr_code;
 
@@ -280,7 +280,7 @@ public class MypageActivity extends Activity {
             String usr_phone = (String) params[5];
             String usr_code = (String) params[6];
 
-            String server_URL = "http://13.124.195.151/hupdate.php";
+            String server_URL = "http://52.78.22.237/hupdate.php";
             String postParameters = "usr_id=" + usr_id + "&usr_pw1=" + usr_pw1 + "&usr_pw2=" + usr_pw2 + "&usr_name=" + usr_name + "&usr_addr=" + usr_addr + "&usr_phone="
                     + usr_phone + "&usr_code=" + usr_code;
 
@@ -389,7 +389,7 @@ public class MypageActivity extends Activity {
 
         try {
             //주어진 URL 문서의 내용을 문자열로 얻는다.
-            String jsonPage = getStringFromUrl("http://13.124.195.151/hselect.php");
+            String jsonPage = getStringFromUrl("http://52.78.22.237/hselect.php");
 
             //읽어들인 JSON포맷의 데이터를 JSON객체로 변환
             JSONObject json = new JSONObject(jsonPage);

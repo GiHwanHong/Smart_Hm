@@ -100,6 +100,5 @@
         <item name="android:layout_margin">10dp</item>
         <item name="android:background">@drawable/ripple_efc_chart_background</item>
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:onClick">Chart_Btn_Click</item>
     </style>
 </resources>

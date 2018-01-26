@@ -160,7 +160,7 @@ public class MainActivity extends Activity {
             String usr_pw = (String)params[1]; // 사용자의 PW를 가져옴
             String usr_code = (String) params[2]; // 사용자의 CODE를 가져옴
 
-            String server_URL = "http://13.124.195.151/hlogin.php";
+            String server_URL = "http://52.78.22.237/hlogin.php";
             String postParameters = "usr_id="+usr_id + "&usr_pw="+usr_pw+"&usr_code="+usr_code;
 
             try {

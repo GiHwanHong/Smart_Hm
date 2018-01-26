@@ -167,7 +167,8 @@ public class ChartActivity extends Activity {
 
         BarData_Feel.setData(feel_data); // initialize the Bardata with argument labels and dataSet
         BarData_Feel.animateY(2000);
-        BarData_Feel.setDescription(null);
+        BarData_Feel.setDescription("온도,습도 사용량");
+        BarData_Feel.setDescriptionTextSize(10f);
         // BarData_Feel.getLegend().setEnabled(false);
         BarData_Feel.invalidate();
 

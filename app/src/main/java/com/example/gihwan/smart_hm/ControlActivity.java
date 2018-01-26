@@ -139,6 +139,12 @@ public class ControlActivity extends AppCompatActivity {
         protected void onPostExecute(String res) {
             super.onPostExecute(res);
             Log.e("모든 LED, 온도, 습도 정보를 얻어 온다!", res);
+            /*if(TMP_val.equals("0")){
+                TMP.setText("다시 측정해 주세요");
+            }
+            if(Hum_val.equals("0")){
+                Humidity.setText("다시 측정해 주세요");
+            }*/
             progressDialog.dismiss();
           //  new Control_recv_Hum().execute();
         }
@@ -161,8 +167,8 @@ public class ControlActivity extends AppCompatActivity {
         StringBuffer sb = new StringBuffer();
 
         try {
-            String jsonPage = getStringFromUrl("http://13.124.195.151/sensor.php");
-            String jsonPage_hut = getStringFromUrl("http://13.124.195.151/hutemp.php");
+            String jsonPage = getStringFromUrl("http://52.78.22.237/sensor.php");
+            String jsonPage_hut = getStringFromUrl("http://52.78.22.237/hutemp.php");
 
             // 읽어들인 JSON포맷의 데이터를 JSON객체로 변환
             JSONObject json = new JSONObject(jsonPage);
@@ -232,6 +238,7 @@ public class ControlActivity extends AppCompatActivity {
 
                     Log.e("temp: " ,TMP_val);
                     Log.e("hu: " ,Hum_val);
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -326,7 +333,7 @@ public class ControlActivity extends AppCompatActivity {
             String VALVE = params[3];
             Log.e("내가 전송하는 값 : " , LED1+LED2+LED3+VALVE);
 
-            String server_URL = "http://13.124.195.151/sensor.php";
+            String server_URL = "http://52.78.22.237/sensor.php";
             String postParameters = "LED1="+LED1 + "&LED2="+LED2+"&LED3="+LED3+"&VALVE="+VALVE;
 
             try {

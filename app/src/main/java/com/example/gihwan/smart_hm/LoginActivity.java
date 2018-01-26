@@ -11,6 +11,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.kakao.kakaolink.KakaoLink;
 import com.kakao.util.KakaoParameterException;
 
@@ -52,6 +54,9 @@ public class LoginActivity extends ActivityGroup {
                 .setIndicator(getString(R.string.tab3))
                 .setContent(new Intent(this,MypageActivity.class).putExtra("usr_id_recv",usr_id_recv).putExtra("usr_code_recv",usr_code_recv).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)));
         createTab();
+        //추가한 라인
+        FirebaseMessaging.getInstance().subscribeToTopic("news");
+        FirebaseInstanceId.getInstance().getToken();
     }
 
     public void createTab() {

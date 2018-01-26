@@ -51,7 +51,7 @@ public class SearchActivity extends Activity {
         webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         webView.addJavascriptInterface(new SearchActivity.AndroidBridge(), "Loads");
         webView.setWebChromeClient(new WebChromeClient());
-        webView.loadUrl("http://13.124.195.151/getDaum.php");
+        webView.loadUrl("http://52.78.22.237/getDaum.php");
     }
 
     private class AndroidBridge {
