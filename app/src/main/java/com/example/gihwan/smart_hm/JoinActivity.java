@@ -241,7 +241,7 @@ public class JoinActivity extends Activity {
             String usr_ip = (String) params[7];
             String usr_code = (String) params[8];
 
-            String server_URL = "http://13.124.195.151/hinsert.php";
+            String server_URL = "http://52.78.22.237/hinsert.php";
             String postParameters = "usr_id=" + usr_id + "&usr_pw1=" + usr_pw1 + "&usr_pw2=" + usr_pw2 + "&usr_name=" + usr_name + "&usr_addr=" + usr_addr + "&usr_phone="
                     + usr_phone + "&usr_joinday=" + usr_joinday + "&usr_ip=" + usr_ip + "&usr_code=" + usr_code;
 

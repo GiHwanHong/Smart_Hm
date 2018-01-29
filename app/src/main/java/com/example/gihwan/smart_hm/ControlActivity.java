@@ -2,6 +2,7 @@ package com.example.gihwan.smart_hm;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,13 +35,17 @@ public class ControlActivity extends AppCompatActivity {
 
     ToggleButton tb_living , tb_kitchen,tb_room,tb_gasvalve;
 
-    String LED_State1="";
+    String LED_State1="";       // 받아온 센서 값을 저장하기 위함
     String LED_State2="";
     String LED_State3="";
     String VALVE_State="";
 
-    String TMP_val ="";
+    String TMP_val ="";         // 받아온 온도 , 습도 값을 저장하기 위함
     String Hum_val ="";
+
+    String Gas_val = "";        // 받아온 가스 , 화재 , 문값을 저장하기 위함
+    String Fire_val = "";
+    String Door_val = "";
 
     private SwipeRefreshLayout refreshLayout_Control;
 
@@ -51,6 +56,7 @@ public class ControlActivity extends AppCompatActivity {
 
         TMP = (TextView)findViewById(R.id.Tmp_r1);                   // 온도 상태를 숫자로 나타내기 위한 Textview
         Humidity = (TextView)findViewById(R.id.Tmp_r2);              // 습도 상태를 숫자로 나타내기 위한 Textview
+
         State_Gas = (TextView)findViewById(R.id.txt_gas_state);      // 가스 상태를 나타내는 Textview
         State_Fire = (TextView)findViewById(R.id.txt_fire_state);    // 화재 상태를 나타내는 Textview
 
@@ -121,6 +127,8 @@ public class ControlActivity extends AppCompatActivity {
         }
     }
 
+
+
     // LED 센서의 값을 읽어올 때 처리
     public class Control_recv_LED extends AsyncTask<String, Void,String>{
 
@@ -138,15 +146,8 @@ public class ControlActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res) {
             super.onPostExecute(res);
-            Log.e("모든 LED, 온도, 습도 정보를 얻어 온다!", res);
-            /*if(TMP_val.equals("0")){
-                TMP.setText("다시 측정해 주세요");
-            }
-            if(Hum_val.equals("0")){
-                Humidity.setText("다시 측정해 주세요");
-            }*/
+            Log.e("모든 LED, 온도, 습도 , 가스 , 화재 정보를 얻어 온다!", res);
             progressDialog.dismiss();
-          //  new Control_recv_Hum().execute();
         }
 
         @Override
@@ -167,34 +168,42 @@ public class ControlActivity extends AppCompatActivity {
         StringBuffer sb = new StringBuffer();
 
         try {
-            String jsonPage = getStringFromUrl("http://52.78.22.237/sensor.php");
-            String jsonPage_hut = getStringFromUrl("http://52.78.22.237/hutemp.php");
+            String jsonPage = getStringFromUrl("http://52.78.22.237/sensor.php");       // 전등 조작 버튼
+            String jsonPage_hut = getStringFromUrl("http://52.78.22.237/hutemp.php");   // 온도 습도 조작
+            String jsonPage_push = getStringFromUrl("http://52.78.22.237/push.php");         // 가스 , 화재 , 문을 알려주기 위한 것 (푸쉬알림)
+
 
             // 읽어들인 JSON포맷의 데이터를 JSON객체로 변환
-            JSONObject json = new JSONObject(jsonPage);
-            Log.e("json : ", json.toString());
+            JSONObject json_sensor = new JSONObject(jsonPage);
+            Log.e("json_sensor : ", json_sensor.toString());
 
             JSONObject json_hut = new JSONObject(jsonPage_hut);
             Log.e("json_hut : ", json_hut.toString());
 
+            JSONObject json_push = new JSONObject(jsonPage_push);
+            Log.e("json_push : ", json_push.toString());
+
             // 배열로 구성 되어있는 JSON 배열생성
-            JSONArray jArr = json.getJSONArray("MyData");
-            JSONArray jArr_hut = json_hut.getJSONArray("hutemp");
+            JSONArray jArr_sensor = json_sensor.getJSONArray("sensorData");           // json tag get sensor
+            JSONArray jArr_hut = json_hut.getJSONArray("hutemp");                     // json tag get hutemp
+            JSONArray jArr_push = json_push.getJSONArray("pushData");                 // json tag get pushData
 
-            Log.e("JArray : ", jArr.toString());
+
+            Log.e("JArray_Sensor : ", jArr_sensor.toString());
             Log.e("JArray_Hut : ", jArr_hut.toString());
+            Log.e("jArr_push : ", jArr_push.toString());
 
-            if(jArr.length()!=0){
+            if(jArr_sensor.length()!=0){
                 //배열의 크기만큼 반복하면서, 현재 켜있는 LED의 값을 추출함
-                for (int i = 0; i < jArr.length(); i++) {
+                for (int i = 0; i < jArr_sensor.length(); i++) {
                     //i번째 배열 할당
-                    json = jArr.getJSONObject(i);
+                    json_sensor = jArr_sensor.getJSONObject(i);
 
                     //ksNo,korName의 값을 추출함
-                    LED_State1 = json.getString("LED1");
-                    LED_State2 = json.getString("LED2");
-                    LED_State3 = json.getString("LED3");
-                    VALVE_State = json.getString("VALVE");
+                    LED_State1 = json_sensor.getString("LED1");     // tag 이름 안에 있는 데이터 LED1의  value를 가져온다
+                    LED_State2 = json_sensor.getString("LED2");     // tag 이름 안에 있는 데이터 LED2의  value를 가져온다
+                    LED_State3 = json_sensor.getString("LED3");     // tag 이름 안에 있는 데이터 LED3의  value를 가져온다
+                    VALVE_State = json_sensor.getString("VALVE");   // tag 이름 안에 있는 데이터 VALVE의  value를 가져온다
 
                     Log.e("LED 1: " ,LED_State1);
                     Log.e("LED 2: " ,LED_State2);
@@ -215,6 +224,18 @@ public class ControlActivity extends AppCompatActivity {
                             if(VALVE_State.equals("1")){
                                 tb_gasvalve.setChecked(true);
                             }
+                            if(LED_State1.equals("0")){
+                                tb_living.setChecked(false);
+                            }
+                            if(LED_State2.equals("0")){
+                                tb_kitchen.setChecked(false);
+                            }
+                            if(LED_State3.equals("0")){
+                                tb_room.setChecked(false);
+                            }
+                            if(VALVE_State.equals("0")){
+                                tb_gasvalve.setChecked(false);
+                            }
                         }});
 
                     sb.append("[ " + LED_State1 + " ]\n");
@@ -226,7 +247,7 @@ public class ControlActivity extends AppCompatActivity {
                 }
             }
 
-            if(jArr_hut.length() !=0){
+            if(jArr_hut.length() !=0){      // 온도, 습도의 데이터가 있는지 없는지 확인 한다
                 //배열의 크기만큼 반복하면서, 현재 켜있는 온도의 값을 추출함
                 for (int i = 0; i < jArr_hut.length(); i++) {
                     //i번째 배열 할당
@@ -247,8 +268,49 @@ public class ControlActivity extends AppCompatActivity {
                             Humidity.setText(Hum_val+" 도");
                             Humidity.setGravity(Gravity.CENTER);
                         }});
-                    sb.append("[ " + TMP_val + " ]\n");
+                    sb.append("[" + TMP_val + "]\n");
                     sb.append("[" + Hum_val + "]\n");
+                    sb.append("\n");
+                }
+            }
+            if(jArr_push.length() !=0){         // 가스 , 화재 , 문 데이터가 있는지 없는지 확인 한다
+                //배열의 크기만큼 반복하면서, 현재의 가스 , 화재 , 문의 데이터를 추출하기 위함
+                for (int i = 0; i < jArr_push.length(); i++) {
+                    //i번째 배열 할당
+                    json_push = jArr_push.getJSONObject(i);
+
+                    //Temp,Humidity의 값을 추출함
+                    Gas_val = json_push.getString("GAS");
+                    Fire_val = json_push.getString("FIRE");
+                    Door_val = json_push.getString("DOOR");
+
+                    Log.e("gas: " ,Gas_val);
+                    Log.e("fire: " ,Fire_val);
+                    Log.e("door: " ,Door_val);
+
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(Gas_val.equals("1")){
+                                State_Gas.setText("가스가 누출 되었습니다.");
+                                State_Gas.setTextColor(Color.RED);
+                            }
+                            if(Fire_val.equals("1")){
+                                State_Fire.setText("화재 위험이 감지되었습니다.");
+                                State_Fire.setTextColor(Color.RED);
+                            }
+                            if(Gas_val.equals("0")){
+                                State_Gas.setText("현재 가스는 안전합니다.");
+                                State_Gas.setTextColor(Color.parseColor("#388E3C"));
+                            }
+                            if(Fire_val.equals("0")){
+                                State_Fire.setText("현재 화재는 안전합니다.");
+                                State_Fire.setTextColor(Color.parseColor("#388E3C"));
+                            }
+                        }});
+                    sb.append("[" + Gas_val + "]\n");
+                    sb.append("[" + Fire_val + "]\n");
+                    sb.append("[" + Door_val + "]\n");
                     sb.append("\n");
                 }
             }
