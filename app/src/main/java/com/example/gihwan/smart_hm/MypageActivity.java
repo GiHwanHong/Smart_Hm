@@ -3,6 +3,7 @@ package com.example.gihwan.smart_hm;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.text.InputFilter;
 import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,6 +63,7 @@ public class MypageActivity extends Activity {
     private String usr_addr_json = "";
     private String usr_phone_json = "";
     private String usr_code_json = "";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -548,5 +551,25 @@ public class MypageActivity extends Activity {
                 break;
         }
     }
-
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {  // 뒤로 가기 버튼 클릭 시 종료 여부를 물어보기 위함
+        switch (keyCode) {
+            case android.view.KeyEvent.KEYCODE_BACK:
+                new AlertDialog.Builder(this)
+                        .setTitle("알림")
+                        .setMessage("종료하시겠습니까?")
+                        .setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("NO", null)
+                        .show();
+                break;
+            default:
+                break;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }
