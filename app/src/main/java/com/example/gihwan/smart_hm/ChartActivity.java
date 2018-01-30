@@ -92,8 +92,8 @@ public class ChartActivity extends Activity {
         data.setValueFormatter(new PercentFormatter());
         data.setValueTextColor(Color.WHITE);
         pieChart_LED.setData(data);
-        pieChart_LED.setDescription("조명 전기 사용량");
-        pieChart_LED.setDescriptionTextSize(20f);
+        pieChart_LED.setDescription("가스 • 전기 사용량");
+        pieChart_LED.setDescriptionTextSize(18f);
 
         pieChart_LED.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override

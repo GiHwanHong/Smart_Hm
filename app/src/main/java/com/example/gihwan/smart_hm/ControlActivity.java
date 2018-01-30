@@ -127,11 +127,12 @@ public class ControlActivity extends AppCompatActivity {
                     VALVE_State="0";
                 }
                 break;
-        }
-    }
+        } }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {  // 뒤로 가기 버튼 클릭 시 종료 여부를 물어보기 위함
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // 뒤로 가기 버튼 클릭 시 종료 여부를 물어보기 위하여 생성하였다
+
         switch (keyCode) {
             case android.view.KeyEvent.KEYCODE_BACK:
                 new AlertDialog.Builder(this)
@@ -152,7 +153,7 @@ public class ControlActivity extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    // LED 센서의 값을 읽어올 때 처리
+    // LED • 가스 • 화재 • 온도 • 습도 센서의 값을 읽어올 때 처리
     public class Control_recv_LED extends AsyncTask<String, Void,String>{
 
         private ProgressDialog progressDialog = new ProgressDialog(ControlActivity.this);
@@ -169,7 +170,7 @@ public class ControlActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String res) {
             super.onPostExecute(res);
-            Log.e("모든 LED, 온도, 습도 , 가스 , 화재 정보를 얻어 온다!", res);
+            Log.e("모든 LED, 온도, 습도, 가스, 화재 정보를 얻어 온다!", res);
             progressDialog.dismiss();
         }
 
@@ -344,7 +345,7 @@ public class ControlActivity extends AppCompatActivity {
         return sb.toString();
     }
 
-    // getStringFromUrl : 주어진 URL의 문서의 내용을 문자열로 반환
+
     public String getStringFromUrl(String pUrl) {
 
         BufferedReader bufreader = null;
@@ -379,9 +380,10 @@ public class ControlActivity extends AppCompatActivity {
 
         }
         return page.toString();
-    }
+    } // getStringFromUrl : 주어진 URL의 문서의 내용을 문자열로 반환
 
-    // LED버튼을 제어 할 값을 보낼 때 처리
+    // LED 버튼을 제어 할 값을 보낼 때 처리
+
     public class Control_send extends AsyncTask<String, Void,String>{
         private ProgressDialog progressDialog = new ProgressDialog(ControlActivity.this);
 
