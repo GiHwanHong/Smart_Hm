@@ -236,7 +236,7 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:onClick="Mypage_Btn_click"
-            android:text="취소"
+            android:text="로그아웃"
             android:textStyle="bold" />
 
         <Button

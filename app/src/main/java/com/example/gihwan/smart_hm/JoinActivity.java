@@ -151,6 +151,7 @@ public class JoinActivity extends Activity {
                     Join_NAME.setText(null);
                     Addrshow_view.setText("주소가 표시 됩니다.");
                     getRandomCode();
+
                 }
 
             } else {

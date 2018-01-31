@@ -136,13 +136,21 @@ public class MypageActivity extends Activity {
                 finish();
                 break;
 
-            case R.id.Mypage_Delete:     // 회원 탈퇴 버튼 클릭 시
-                new Json_Delete().execute(usr_code_json);
-                com.nispok.snackbar.Snackbar.with(getApplicationContext())
-                        .text("탈퇴 처리가 되었습니다")
-                        .show(MypageActivity.this);
-                startActivity(new Intent(this, MainActivity.class));
-                finish();
+            case R.id.Mypage_Delete:     // 회원 탈퇴 버튼 클릭 시 한번 더 물어보자
+
+                new AlertDialog.Builder(this)
+                        .setTitle("중요알림")
+                        .setMessage("정말 탈퇴 하시겠습니까?")
+                        .setPositiveButton("네", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new Json_Delete().execute(usr_code_json);
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
+                            }
+                        })
+                        .setNegativeButton("아니요", null)
+                        .show();
                 break;
 
             case R.id.Mypage_Update:    // 회원 정보 변경 버튼 클릭시

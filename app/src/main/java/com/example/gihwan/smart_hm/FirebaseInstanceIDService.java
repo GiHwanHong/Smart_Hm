@@ -37,18 +37,15 @@ public class FirebaseInstanceIDService extends FirebaseInstanceIdService {
         RequestBody body = new FormBody.Builder()
                 .add("Token", token)
                 .build();
-
         //request
         Request request = new Request.Builder()
                 .url("http://52.78.22.237/fcm/register.php")
                 .post(body)
                 .build();
-
         try {
             client.newCall(request).execute();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
