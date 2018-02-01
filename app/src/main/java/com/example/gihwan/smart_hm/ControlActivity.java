@@ -68,15 +68,16 @@ public class ControlActivity extends AppCompatActivity {
         tb_room = (ToggleButton) findViewById(R.id.switch_L_3);         //         - 방
         tb_gasvalve = (ToggleButton) findViewById(R.id.switch_G_1);     //         - 가스벨브
 
+        // SwipeRefreshLayout을 사용하여 새로고침을 실행한다.
         refreshLayout_Control = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLo);
-        refreshLayout_Control.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {                 // 호출 시점 Refresh
+        refreshLayout_Control.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 new Control_recv_LED().execute();
-
                 refreshLayout_Control.setRefreshing(false);
             }
         });
+
         new Control_recv_LED().execute();
     }
 
